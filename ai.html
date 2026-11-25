@@ -96,6 +96,9 @@ main{margin-left:var(--side);padding:88px 32px 80px;overflow-x:clip}
 .md blockquote.story{border:1px solid var(--taro);border-left:6px solid var(--taro);background:var(--taro-s);color:var(--ink);border-radius:14px;padding:14px 20px}
 .md blockquote.recap{border-left-color:var(--yellow);background:var(--yellow-s);color:var(--ink);border-radius:0 14px 14px 0}
 .md blockquote.note{border-left-color:var(--mint);background:var(--mint-s);color:var(--ink);font-size:15px}
+.md figure.story-figure{margin:20px 0 26px;padding:0;background:transparent;border:0;box-shadow:none;text-align:center}
+.md figure.story-figure img{display:block;width:100%;max-width:100%;height:auto;margin:0 auto;background:transparent;border:0;padding:0;border-radius:10px}
+.md figure.story-figure figcaption{margin:8px 4px 0;color:var(--mute);font-size:13px;line-height:1.5}
 .md code{background:var(--peach-s);padding:1px 6px;border-radius:6px;font-size:.88em}
 .md pre{background:var(--code-bg);color:var(--code-ink);padding:16px;border-radius:12px;overflow-x:auto;font-size:14px;line-height:1.6;max-width:100%;overflow-wrap:normal}
 .md pre code{background:none;padding:0;color:inherit;font-size:inherit;overflow-wrap:normal}
@@ -594,6 +597,7 @@ body.storyonly .md .tech{display:none}
 <li>講清楚為什麼底層模型一樣、兩套工具用起來還是不一樣</li>
 <li>知道「在本機執行」不等於資料不會離開這台電腦</li>
 </ul>
+
 <p class="tech"><em>【先看問題】</em></p>
 <h2 id="ai-01-s1">只會回話的模型，做不到「幫我讀檔案」</h2>
 <blockquote class="story">
@@ -693,6 +697,7 @@ body.storyonly .md .tech{display:none}
 <li>用到才送檔案＝需要時才把某件衣服拿回去洗</li>
 <li>只送相關幾行＝只剪下一塊布料寄出去</li>
 </ul>
+
 <p>「所以要先問清楚：哪些東西會離開你家？」</p>
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜三種取用方式，離開本機的量不同</strong></p>
@@ -703,6 +708,7 @@ body.storyonly .md .tech{display:none}
 <li><strong>用到才送檔案</strong>：以檔案為單位，需要時才把內容傳出去，範圍比整份程式碼小。</li>
 <li><strong>用到才送幾行</strong>：不預先建索引，等你送出要求的當下才搜尋，送到後端的是必要的那幾行程式碼。</li>
 </ul>
+
 <p class="tech">這三種做法不必對應到特定產品：各家的實作隨版本變動，要判斷手上的工具屬於哪一種，得看它自己的文件。</p>
 <p class="tech">不管介面開在哪裡，只要模型跑在遠端，送出去的提示、程式碼片段與工具結果就可能離開本機；實際情況要看部署方式、產品文件與公司的設定。</p>
 <blockquote class="tech">
@@ -725,6 +731,7 @@ body.storyonly .md .tech{display:none}
 <li><code>/compact</code>：壓縮目前的對話上下文，把空間讓出來。</li>
 <li><code>ultrathink</code>：寫在提示裡的關鍵字，要求這一輪想得更深入。它的做法是在上下文裡加一段指示，送給模型的運算強度設定並不會改變；「think」「think hard」這類講法不算關鍵字，只會被當成普通文字。<a href="https://code.claude.com/docs/en/model-config">出處</a></li>
 </ul>
+
 <p class="tech">指令名稱與行為會隨版本、方案與執行環境改變，用之前查一下當下版本的官方說明或內建的 <code>/help</code>。</p>
 <h3 id="ai-01-story">📖 本集故事總結</h3>
 <table>
@@ -780,6 +787,7 @@ body.storyonly .md .tech{display:none}
 <li>工具跟上下文不是越多越好，相關、清楚、可控才是重點。</li>
 <li>介面跑在本機不代表資料不外傳，動手前先確認可讀範圍、外傳內容與核准方式。</li>
 </ul>
+
 <h2 id="ai-01-s6">隨堂測驗</h2>
 <p class="tech"><strong>Q1. 只把「garden.jpg 裡有幾朵花？」這句話送給模型、沒有附上圖片內容，最核心的問題是什麼？</strong></p>
 <ul class="tech">
@@ -788,6 +796,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 檔名不能包含句點</li>
 <li>(D) 問題必須先改寫成程式碼</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 模型只能依照收到的內容判斷；代理程式可以用讀檔工具把缺的那塊補上。</p>
@@ -800,6 +809,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 跳過模型直接產生答案</li>
 <li>(D) 把整個專案公開到網路上</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 代理程式負責真的去執行工具，模型再根據結果決定下一步。</p>
@@ -812,6 +822,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 代理程式的功能只是換聊天介面的配色</li>
 <li>(D) 模型名稱比工具權限更值得看</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 框架決定模型看到什麼、能用什麼、工具跑完之後怎麼接，這些都不是模型自己決定的。</p>
@@ -824,6 +835,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 模型訓練資料的完整副本</li>
 <li>(D) 電腦上所有刪除過的檔案</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 工作目錄、專案規則、開著的檔案狀態與對話摘要，都可能被自動附上。</p>
@@ -836,6 +848,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 讀檔工具會自己訓練出新的模型</li>
 <li>(D) 工具規格只會影響畫面排版</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 模型是靠工具的名稱與說明判斷該不該叫、參數怎麼填。</p>
@@ -848,6 +861,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 工具回傳內容的字元編碼</li>
 <li>(D) 專案規則檔的檔名</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 錯誤處理與停止條件屬於框架層的流程安排，不是模型自己決定的。</p>
@@ -860,6 +874,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 只要開終端機就得連上公開網站</li>
 <li>(D) 所有模型都只能在瀏覽器裡運作</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 資料會不會外傳取決於模型跑在哪裡、產品怎麼設計、公司怎麼設定，不能只看介面開在哪。</p>
@@ -872,6 +887,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 只指定模型名稱，不給任務背景</li>
 <li>(D) 工具失敗時讓它無限重試</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 清楚的範圍、看得到的變更與可驗證的結果，能大幅降低誤解與誤操作。</p>
@@ -905,6 +921,7 @@ body.storyonly .md .tech{display:none}
 <li>說出一次 MCP 呼叫從送出到回來的步驟</li>
 <li>知道 Hooks 適合把哪些檢查變成固定流程</li>
 </ul>
+
 <p class="tech"><em>【工具從哪裡來】</em></p>
 <h2 id="ai-02-s1">三種來源：內建、本機指令、外接伺服器</h2>
 <blockquote class="story">
@@ -954,6 +971,7 @@ body.storyonly .md .tech{display:none}
 <li><strong>Client</strong>＝牆上的某一個插座</li>
 <li><strong>Server</strong>＝插上去的電器，提供某種能力</li>
 </ul>
+
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜房子、插座、電器</strong></p>
 <div class="mbox"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-62.171875 -8 457.578125 208" style="max-width: 457.578px; min-width: 457.578px;" xmlns="http://www.w3.org/2000/svg" width="100%" id="yjm184"><style>#yjm184{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;fill:#2b2622;}#yjm184 .error-icon{fill:#dff1ea;}#yjm184 .error-text{fill:#200e15;stroke:#200e15;}#yjm184 .edge-thickness-normal{stroke-width:2px;}#yjm184 .edge-thickness-thick{stroke-width:3.5px;}#yjm184 .edge-pattern-solid{stroke-dasharray:0;}#yjm184 .edge-pattern-dashed{stroke-dasharray:3;}#yjm184 .edge-pattern-dotted{stroke-dasharray:2;}#yjm184 .marker{fill:#8d847b;stroke:#8d847b;}#yjm184 .marker.cross{stroke:#8d847b;}#yjm184 svg{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;}#yjm184 .label{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;color:#2b2622;}#yjm184 .cluster-label text{fill:#200e15;}#yjm184 .cluster-label span,#yjm184 p{color:#200e15;}#yjm184 .label text,#yjm184 span,#yjm184 p{fill:#2b2622;color:#2b2622;}#yjm184 .node rect,#yjm184 .node circle,#yjm184 .node ellipse,#yjm184 .node polygon,#yjm184 .node path{fill:#dceafa;stroke:#4a8fd6;stroke-width:1px;}#yjm184 .flowchart-label text{text-anchor:middle;}#yjm184 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#yjm184 .node .label{text-align:center;}#yjm184 .node.clickable{cursor:pointer;}#yjm184 .arrowheadPath{fill:#0b0b0b;}#yjm184 .edgePath .path{stroke:#8d847b;stroke-width:2.0px;}#yjm184 .flowchart-link{stroke:#8d847b;fill:none;}#yjm184 .edgeLabel{background-color:#fffdf9;text-align:center;}#yjm184 .edgeLabel rect{opacity:0.5;background-color:#fffdf9;fill:#fffdf9;}#yjm184 .labelBkg{background-color:rgba(255, 253, 249, 0.5);}#yjm184 .cluster rect{fill:#fbf7f1;stroke:#e6ded3;stroke-width:1px;}#yjm184 .cluster text{fill:#200e15;}#yjm184 .cluster span,#yjm184 p{color:#200e15;}#yjm184 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:12px;background:#dff1ea;border:1px solid hsl(156.6666666667, 0%, 80.9803921569%);border-radius:2px;pointer-events:none;z-index:100;}#yjm184 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2b2622;}#yjm184 :root{--mermaid-font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="6" viewBox="0 0 10 10" class="marker flowchart" id="yjm184-yjm184_flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart" id="yjm184-yjm184_flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="yjm184-yjm184_flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="yjm184-yjm184_flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm184-yjm184_flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm184-yjm184_flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"><g id="yjm184-H" class="cluster default flowchart-label"><rect height="192" width="262.65625" y="0" x="-54.171875" ry="0" rx="0" style=""></rect><g transform="translate(-54.171875, 0)" class="cluster-label"><foreignObject height="21" width="262.65625"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">Host 主機：整間房子（Claude Code）</span></div></foreignObject></g></g></g><g class="edgePaths"><path marker-end="url(#yjm184-yjm184_flowchart-pointEnd)" marker-start="url(#yjm184-yjm184_flowchart-pointStart)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C1 LE-S1" id="yjm184-L-C1-S1-0" d="M133.12,53L136.652,53C140.184,53,147.248,53,157.762,53C168.276,53,182.24,53,196.57,53C210.9,53,225.597,53,232.945,53L240.294,53"></path><path marker-end="url(#yjm184-yjm184_flowchart-pointEnd)" marker-start="url(#yjm184-yjm184_flowchart-pointStart)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C2 LE-S2" id="yjm184-L-C2-S2-0" d="M134.613,139L137.896,139C141.179,139,147.746,139,158.011,139C168.276,139,182.24,139,195.32,139C208.4,139,220.597,139,226.695,139L232.794,139"></path></g><g class="edgeLabels"><g transform="translate(196.203125, 53)" class="edgeLabel"><g transform="translate(-16.890625, -10.5)" class="label"><foreignObject height="21" width="33.78125"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">MCP</span></div></foreignObject></g></g><g transform="translate(196.203125, 139)" class="edgeLabel"><g transform="translate(-16.890625, -10.5)" class="label"><foreignObject height="21" width="33.78125"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">MCP</span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(77.15625, 53)" data-id="C1" data-node="true" id="yjm184-flowchart-C1-1473" class="node default default flowchart-label"><rect height="36" width="101.328125" y="-18" x="-50.6640625" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-43.1640625, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="86.328125"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">Client 插座 1</span></div></foreignObject></g></g><g transform="translate(77.15625, 139)" data-id="C2" data-node="true" id="yjm184-flowchart-C2-1474" class="node default default flowchart-label"><rect height="36" width="104.3125" y="-18" x="-52.15625" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-44.65625, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="89.3125"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">Client 插座 2</span></div></foreignObject></g></g><g transform="translate(312.75, 53)" data-id="S1" data-node="true" id="yjm184-flowchart-S1-1476" class="node default default flowchart-label"><rect height="36" width="134.3125" y="-18" x="-67.15625" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-59.65625, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="119.3125"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">Server：工單系統</span></div></foreignObject></g></g><g transform="translate(312.75, 139)" data-id="S2" data-node="true" id="yjm184-flowchart-S2-1478" class="node default default flowchart-label"><rect height="36" width="149.3125" y="-18" x="-74.65625" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-67.15625, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="134.3125"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">Server：資料庫查詢</span></div></foreignObject></g></g></g></g></g></svg></div>
@@ -963,6 +981,7 @@ body.storyonly .md .tech{display:none}
 <li><strong>Resource（資源）</strong>：可以讀取的資料或內容，例如文件、日誌、設定。</li>
 <li><strong>Prompt（提示範本）</strong>：可重複使用的互動範本，例如「幫我審這段程式碼」的標準流程。</li>
 </ul>
+
 <p class="tech">MCP 本身不負責推理，也不限定背後要用哪一顆模型。「伺服器」在這裡指的是提供能力的那一端，不一定是一直開著的機器<a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/transports">出處</a>——用標準輸入輸出連線時，它是主機在需要時才啟動的子程序，用完就結束。</p>
 <blockquote class="tech">
 <p>📝 查證更正：原筆記寫「MCP Server 顧名思義就是一台一直運作的伺服器」，查證後更正</p>
@@ -1042,6 +1061,7 @@ body.storyonly .md .tech{display:none}
 <li>高階介面＝直接叫外送套餐，快但選擇少</li>
 <li>低階介面＝自己進廚房從切菜開始，彈性大但什麼都要自己顧</li>
 </ul>
+
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜高階介面還是低階介面</strong></p>
 <div class="mbox"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 501 437" style="max-width: 501px; min-width: 501px;" xmlns="http://www.w3.org/2000/svg" width="100%" id="yjm187"><style>#yjm187{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;fill:#2b2622;}#yjm187 .error-icon{fill:#dff1ea;}#yjm187 .error-text{fill:#200e15;stroke:#200e15;}#yjm187 .edge-thickness-normal{stroke-width:2px;}#yjm187 .edge-thickness-thick{stroke-width:3.5px;}#yjm187 .edge-pattern-solid{stroke-dasharray:0;}#yjm187 .edge-pattern-dashed{stroke-dasharray:3;}#yjm187 .edge-pattern-dotted{stroke-dasharray:2;}#yjm187 .marker{fill:#8d847b;stroke:#8d847b;}#yjm187 .marker.cross{stroke:#8d847b;}#yjm187 svg{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;}#yjm187 .label{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;color:#2b2622;}#yjm187 .cluster-label text{fill:#200e15;}#yjm187 .cluster-label span,#yjm187 p{color:#200e15;}#yjm187 .label text,#yjm187 span,#yjm187 p{fill:#2b2622;color:#2b2622;}#yjm187 .node rect,#yjm187 .node circle,#yjm187 .node ellipse,#yjm187 .node polygon,#yjm187 .node path{fill:#dceafa;stroke:#4a8fd6;stroke-width:1px;}#yjm187 .flowchart-label text{text-anchor:middle;}#yjm187 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#yjm187 .node .label{text-align:center;}#yjm187 .node.clickable{cursor:pointer;}#yjm187 .arrowheadPath{fill:#0b0b0b;}#yjm187 .edgePath .path{stroke:#8d847b;stroke-width:2.0px;}#yjm187 .flowchart-link{stroke:#8d847b;fill:none;}#yjm187 .edgeLabel{background-color:#fffdf9;text-align:center;}#yjm187 .edgeLabel rect{opacity:0.5;background-color:#fffdf9;fill:#fffdf9;}#yjm187 .labelBkg{background-color:rgba(255, 253, 249, 0.5);}#yjm187 .cluster rect{fill:#fbf7f1;stroke:#e6ded3;stroke-width:1px;}#yjm187 .cluster text{fill:#200e15;}#yjm187 .cluster span,#yjm187 p{color:#200e15;}#yjm187 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:12px;background:#dff1ea;border:1px solid hsl(156.6666666667, 0%, 80.9803921569%);border-radius:2px;pointer-events:none;z-index:100;}#yjm187 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2b2622;}#yjm187 :root{--mermaid-font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="6" viewBox="0 0 10 10" class="marker flowchart" id="yjm187-yjm187_flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart" id="yjm187-yjm187_flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="yjm187-yjm187_flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="yjm187-yjm187_flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm187-yjm187_flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm187-yjm187_flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#yjm187-yjm187_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-Q LE-H" id="yjm187-L-Q-H-0" d="M169.319,139.069L154.849,152.808C140.379,166.546,111.44,194.023,96.97,212.795C82.5,231.567,82.5,241.633,82.5,246.667L82.5,251.7"></path><path marker-end="url(#yjm187-yjm187_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-Q LE-L" id="yjm187-L-Q-L-0" d="M264.181,139.069L278.484,152.808C292.787,166.546,321.394,194.023,335.697,212.795C350,231.567,350,241.633,350,246.667L350,251.7"></path><path marker-end="url(#yjm187-yjm187_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-H LE-S" id="yjm187-L-H-S-0" d="M82.5,314L82.5,318.167C82.5,322.333,82.5,330.667,92.097,338.672C101.693,346.677,120.886,354.354,130.483,358.193L140.079,362.032"></path><path marker-end="url(#yjm187-yjm187_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-L LE-S" id="yjm187-L-L-S-0" d="M350,314L350,318.167C350,322.333,350,330.667,340.403,338.672C330.807,346.677,311.614,354.354,302.017,358.193L292.421,362.032"></path></g><g class="edgeLabels"><g transform="translate(82.5, 221.5)" class="edgeLabel"><g transform="translate(-7.5, -10.5)" class="label"><foreignObject height="21" width="15"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">是</span></div></foreignObject></g></g><g transform="translate(350, 221.5)" class="edgeLabel"><g transform="translate(-37.5, -10.5)" class="label"><foreignObject height="21" width="75"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">要細部控制</span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(216.25, 93)" data-id="Q" data-node="true" id="yjm187-flowchart-Q-1489" class="node default default flowchart-label"><polygon style="" transform="translate(-93,93)" class="label-container" points="93,0 186,-93 93,-186 0,-93"></polygon><g transform="translate(-67.5, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="135"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">需求是常見功能嗎？</span></div></foreignObject></g></g><g transform="translate(82.5, 285.5)" data-id="H" data-node="true" id="yjm187-flowchart-H-1491" class="node default default flowchart-label"><rect height="57" width="165" y="-28.5" x="-82.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-75, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="150"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">高階介面<br>外送套餐：快、選擇少</span></div></foreignObject></g></g><g transform="translate(350, 285.5)" data-id="L" data-node="true" id="yjm187-flowchart-L-1493" class="node default default flowchart-label"><rect height="57" width="270" y="-28.5" x="-135" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-127.5, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="255"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">低階介面<br>自己進廚房：彈性大、自己扛協定細節</span></div></foreignObject></g></g><g transform="translate(216.25, 392.5)" data-id="S" data-node="true" id="yjm187-flowchart-S-1495" class="node default default flowchart-label"><rect height="57" width="165" y="-28.5" x="-82.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-75, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="150"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">官方 SDK<br>型別、訊息處理、傳輸</span></div></foreignObject></g></g></g></g></g></svg></div>
@@ -1113,6 +1133,7 @@ body.storyonly .md .tech{display:none}
 <li>憑證分離＝密碼不要寫在交接單上</li>
 <li>稽核紀錄＝裝監視器，知道誰幾點進來做了什麼</li>
 </ul>
+
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜交出鑰匙前先畫界線</strong></p>
 <div class="mbox"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 381 394" style="max-width: 381px; min-width: 381px;" xmlns="http://www.w3.org/2000/svg" width="100%" id="yjm189"><style>#yjm189{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;fill:#2b2622;}#yjm189 .error-icon{fill:#dff1ea;}#yjm189 .error-text{fill:#200e15;stroke:#200e15;}#yjm189 .edge-thickness-normal{stroke-width:2px;}#yjm189 .edge-thickness-thick{stroke-width:3.5px;}#yjm189 .edge-pattern-solid{stroke-dasharray:0;}#yjm189 .edge-pattern-dashed{stroke-dasharray:3;}#yjm189 .edge-pattern-dotted{stroke-dasharray:2;}#yjm189 .marker{fill:#8d847b;stroke:#8d847b;}#yjm189 .marker.cross{stroke:#8d847b;}#yjm189 svg{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;}#yjm189 .label{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;color:#2b2622;}#yjm189 .cluster-label text{fill:#200e15;}#yjm189 .cluster-label span,#yjm189 p{color:#200e15;}#yjm189 .label text,#yjm189 span,#yjm189 p{fill:#2b2622;color:#2b2622;}#yjm189 .node rect,#yjm189 .node circle,#yjm189 .node ellipse,#yjm189 .node polygon,#yjm189 .node path{fill:#dceafa;stroke:#4a8fd6;stroke-width:1px;}#yjm189 .flowchart-label text{text-anchor:middle;}#yjm189 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#yjm189 .node .label{text-align:center;}#yjm189 .node.clickable{cursor:pointer;}#yjm189 .arrowheadPath{fill:#0b0b0b;}#yjm189 .edgePath .path{stroke:#8d847b;stroke-width:2.0px;}#yjm189 .flowchart-link{stroke:#8d847b;fill:none;}#yjm189 .edgeLabel{background-color:#fffdf9;text-align:center;}#yjm189 .edgeLabel rect{opacity:0.5;background-color:#fffdf9;fill:#fffdf9;}#yjm189 .labelBkg{background-color:rgba(255, 253, 249, 0.5);}#yjm189 .cluster rect{fill:#fbf7f1;stroke:#e6ded3;stroke-width:1px;}#yjm189 .cluster text{fill:#200e15;}#yjm189 .cluster span,#yjm189 p{color:#200e15;}#yjm189 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:12px;background:#dff1ea;border:1px solid hsl(156.6666666667, 0%, 80.9803921569%);border-radius:2px;pointer-events:none;z-index:100;}#yjm189 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2b2622;}#yjm189 :root{--mermaid-font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="6" viewBox="0 0 10 10" class="marker flowchart" id="yjm189-yjm189_flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart" id="yjm189-yjm189_flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="yjm189-yjm189_flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="yjm189-yjm189_flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm189-yjm189_flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm189-yjm189_flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#yjm189-yjm189_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-A LE-OK" id="yjm189-L-A-OK-0" d="M127.5,28.5L135.417,28.5C143.333,28.5,159.167,28.5,182.499,51.516C205.832,74.532,236.663,120.564,252.079,143.58L267.495,166.596"></path><path marker-end="url(#yjm189-yjm189_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-OK" id="yjm189-L-B-OK-0" d="M142.5,135.5L147.917,135.5C153.333,135.5,164.167,135.5,180.681,141.023C197.196,146.546,219.391,157.592,230.489,163.115L241.587,168.639"></path><path marker-end="url(#yjm189-yjm189_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-OK" id="yjm189-L-C-OK-0" d="M150,242.5L154.167,242.5C158.333,242.5,166.667,242.5,181.931,236.977C197.196,231.454,219.391,220.408,230.489,214.885L241.587,209.361"></path><path marker-end="url(#yjm189-yjm189_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-D LE-OK" id="yjm189-L-D-OK-0" d="M112.5,349.5L122.917,349.5C133.333,349.5,154.167,349.5,179.999,326.484C205.832,303.468,236.663,257.436,252.079,234.42L267.495,211.404"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(75, 28.5)" data-id="A" data-node="true" id="yjm189-flowchart-A-1510" class="node default default flowchart-label"><rect height="57" width="105" y="-28.5" x="-52.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-45, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="90"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">最小權限<br>只給客廳鑰匙</span></div></foreignObject></g></g><g transform="translate(282.5, 189)" data-id="OK" data-node="true" id="yjm189-flowchart-OK-1511" class="node default default flowchart-label"><rect height="36" width="165" y="-18" x="-82.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-75, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="150"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">可以放心接上外部能力</span></div></foreignObject></g></g><g transform="translate(75, 135.5)" data-id="B" data-node="true" id="yjm189-flowchart-B-1512" class="node default default flowchart-label"><rect height="57" width="135" y="-28.5" x="-67.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-60, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="120"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">憑證分離<br>密碼不寫在交接單</span></div></foreignObject></g></g><g transform="translate(75, 242.5)" data-id="C" data-node="true" id="yjm189-flowchart-C-1514" class="node default default flowchart-label"><rect height="57" width="150" y="-28.5" x="-75" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-67.5, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="135"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">信任來源固定<br>伺服器、套件先審過</span></div></foreignObject></g></g><g transform="translate(75, 349.5)" data-id="D" data-node="true" id="yjm189-flowchart-D-1516" class="node default default flowchart-label"><rect height="57" width="75" y="-28.5" x="-37.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-30, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="60"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">稽核紀錄<br>監視器</span></div></foreignObject></g></g></g></g></g></svg></div>
@@ -1124,6 +1145,7 @@ body.storyonly .md .tech{display:none}
 <li>想好失敗要怎麼辦：測試失敗要能擋住交付；通知失敗就不一定要中止全部工作。</li>
 <li>防止無限循環：避免掛鉤觸發修改、修改又觸發同一個掛鉤。</li>
 </ul>
+
 <p class="tech">專案規則檔描述的是「應該怎麼做」，掛鉤則能把部分規範變成「每次都會跑的檢查」。兩者搭配，才同時有語意上的指引跟機械式的防線。</p>
 <h3 id="ai-02-story">📖 本集故事總結</h3>
 <table>
@@ -1192,6 +1214,7 @@ body.storyonly .md .tech{display:none}
 <li>JSON-RPC 管訊息長什麼樣，傳輸層管訊息怎麼送到，兩件事不要混在一起。</li>
 <li>Hooks 適合把權限檢查、測試與通知變成固定流程，但要控制耗時、副作用與敏感資料。</li>
 </ul>
+
 <h2 id="ai-02-s8">隨堂測驗</h2>
 <p class="tech"><strong>Q1. 助理跑了一次專案裡早就裝好的測試指令，被執行的那支測試程式屬於哪一類工具來源？</strong></p>
 <ul class="tech">
@@ -1200,6 +1223,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) MCP 的資源</li>
 <li>(D) 提示範本</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 測試程式是裝在你這台電腦上的，屬於本機指令；內建工具負責的是「能執行指令」這件能力，兩者是不同的來源。</p>
@@ -1212,6 +1236,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 專門存密碼的保險箱</li>
 <li>(D) 保證答案正確的審查員</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> MCP 規範應用程式跟外部能力怎麼交換資訊，它不訓練模型，也不保證答案。</p>
@@ -1224,6 +1249,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 螢幕與鍵盤的驅動程式</li>
 <li>(D) 版本控制分支與作業系統核心</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> MCP 的核心能力有三種：可執行的工具、可讀取的資源、可重複使用的提示範本。</p>
@@ -1236,6 +1262,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 只有 WebSocket</li>
 <li>(D) 只有容器</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 規格只定義這兩種；容器是打包與部署的方式，裡面的伺服器仍走這兩種之一。</p>
@@ -1248,6 +1275,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) JSON-RPC 只負責網路加密</li>
 <li>(D) 傳輸機制決定工具的商業邏輯</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 訊息格式跟搬運管道是不同層次，要分開理解。</p>
@@ -1260,6 +1288,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) Notification</li>
 <li>(D) 任務結束後的摘要</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> PreToolUse 發生在工具真的執行之前，適合檢查參數、權限，甚至直接擋掉。</p>
@@ -1272,6 +1301,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 伺服器啟動前刪掉專案</li>
 <li>(D) 每次通知時重新安裝所有套件</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> PostToolUse 可以在寫入或編輯完成後跑測試，很快看出變更有沒有弄壞既有行為。</p>
@@ -1284,6 +1314,7 @@ body.storyonly .md .tech{display:none}
 <li>(C) 把所有權杖寫進專案規則檔</li>
 <li>(D) 把操作紀錄全部關掉</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 能力只開到剛好夠用，出事時影響範圍才關得住。</p>
@@ -1317,6 +1348,7 @@ body.storyonly .md .tech{display:none}
 <li>用目標、上下文、限制與驗收方式寫提示</li>
 <li>把生成結果當草稿，用差異與測試把關</li>
 </ul>
+
 <p class="tech"><em>【先把角色擺對】</em></p>
 <h2 id="ai-03-s1">它是副駕駛，你才是機長</h2>
 <blockquote class="story">
@@ -1406,6 +1438,7 @@ function listActiveOrders(orders) {
 <li>講簡短＝不用先寒暄十分鐘</li>
 <li>附上下文＝告訴店員你對花生過敏</li>
 </ul>
+
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜好提示的四個要點</strong></p>
 <div class="mbox"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 586 159" style="max-width: 586px; min-width: 586px;" xmlns="http://www.w3.org/2000/svg" width="100%" id="yjm193"><style>#yjm193{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;fill:#2b2622;}#yjm193 .error-icon{fill:#dff1ea;}#yjm193 .error-text{fill:#200e15;stroke:#200e15;}#yjm193 .edge-thickness-normal{stroke-width:2px;}#yjm193 .edge-thickness-thick{stroke-width:3.5px;}#yjm193 .edge-pattern-solid{stroke-dasharray:0;}#yjm193 .edge-pattern-dashed{stroke-dasharray:3;}#yjm193 .edge-pattern-dotted{stroke-dasharray:2;}#yjm193 .marker{fill:#8d847b;stroke:#8d847b;}#yjm193 .marker.cross{stroke:#8d847b;}#yjm193 svg{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;}#yjm193 .label{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;color:#2b2622;}#yjm193 .cluster-label text{fill:#200e15;}#yjm193 .cluster-label span,#yjm193 p{color:#200e15;}#yjm193 .label text,#yjm193 span,#yjm193 p{fill:#2b2622;color:#2b2622;}#yjm193 .node rect,#yjm193 .node circle,#yjm193 .node ellipse,#yjm193 .node polygon,#yjm193 .node path{fill:#dceafa;stroke:#4a8fd6;stroke-width:1px;}#yjm193 .flowchart-label text{text-anchor:middle;}#yjm193 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#yjm193 .node .label{text-align:center;}#yjm193 .node.clickable{cursor:pointer;}#yjm193 .arrowheadPath{fill:#0b0b0b;}#yjm193 .edgePath .path{stroke:#8d847b;stroke-width:2.0px;}#yjm193 .flowchart-link{stroke:#8d847b;fill:none;}#yjm193 .edgeLabel{background-color:#fffdf9;text-align:center;}#yjm193 .edgeLabel rect{opacity:0.5;background-color:#fffdf9;fill:#fffdf9;}#yjm193 .labelBkg{background-color:rgba(255, 253, 249, 0.5);}#yjm193 .cluster rect{fill:#fbf7f1;stroke:#e6ded3;stroke-width:1px;}#yjm193 .cluster text{fill:#200e15;}#yjm193 .cluster span,#yjm193 p{color:#200e15;}#yjm193 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:12px;background:#dff1ea;border:1px solid hsl(156.6666666667, 0%, 80.9803921569%);border-radius:2px;pointer-events:none;z-index:100;}#yjm193 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2b2622;}#yjm193 :root{--mermaid-font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="6" viewBox="0 0 10 10" class="marker flowchart" id="yjm193-yjm193_flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart" id="yjm193-yjm193_flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="yjm193-yjm193_flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="yjm193-yjm193_flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm193-yjm193_flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm193-yjm193_flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#yjm193-yjm193_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-P LE-A" id="yjm193-L-P-A-0" d="M270,23.212L233.75,29.51C197.5,35.808,125,48.404,88.75,57.985C52.5,67.567,52.5,74.133,52.5,77.417L52.5,80.7"></path><path marker-end="url(#yjm193-yjm193_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-P LE-B" id="yjm193-L-P-B-0" d="M270,34.645L262.083,39.038C254.167,43.43,238.333,52.215,230.417,59.891C222.5,67.567,222.5,74.133,222.5,77.417L222.5,80.7"></path><path marker-end="url(#yjm193-yjm193_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-P LE-C" id="yjm193-L-P-C-0" d="M330,34.645L337.917,39.038C345.833,43.43,361.667,52.215,369.583,59.891C377.5,67.567,377.5,74.133,377.5,77.417L377.5,80.7"></path><path marker-end="url(#yjm193-yjm193_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-P LE-D" id="yjm193-L-P-D-0" d="M330,23.931L361.25,30.109C392.5,36.287,455,48.644,486.25,58.105C517.5,67.567,517.5,74.133,517.5,77.417L517.5,80.7"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(300, 18)" data-id="P" data-node="true" id="yjm193-flowchart-P-1544" class="node default default flowchart-label"><rect height="36" width="60" y="-18" x="-30" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-22.5, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="45"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">好提示</span></div></foreignObject></g></g><g transform="translate(52.5, 114.5)" data-id="A" data-node="true" id="yjm193-flowchart-A-1545" class="node default default flowchart-label"><rect height="57" width="105" y="-28.5" x="-52.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-45, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="90"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">一次一件<br>一張單一份餐</span></div></foreignObject></g></g><g transform="translate(222.5, 114.5)" data-id="B" data-node="true" id="yjm193-flowchart-B-1547" class="node default default flowchart-label"><rect height="57" width="135" y="-28.5" x="-67.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-60, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="120"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">講具體<br>大杯、半糖、去冰</span></div></foreignObject></g></g><g transform="translate(377.5, 114.5)" data-id="C" data-node="true" id="yjm193-flowchart-C-1549" class="node default default flowchart-label"><rect height="57" width="75" y="-28.5" x="-37.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-30, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="60"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">講簡短<br>不用寒暄</span></div></foreignObject></g></g><g transform="translate(517.5, 114.5)" data-id="D" data-node="true" id="yjm193-flowchart-D-1551" class="node default default flowchart-label"><rect height="57" width="105" y="-28.5" x="-52.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-45, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="90"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">附上下文<br>我對花生過敏</span></div></foreignObject></g></g></g></g></g></svg></div>
@@ -1416,6 +1449,7 @@ function listActiveOrders(orders) {
 <li><strong>講簡短</strong>：刪掉客套跟重複，只留真正影響答案的限制。</li>
 <li><strong>附上下文</strong>：把相關程式碼、錯誤訊息、規格與既有測試一起給它。</li>
 </ul>
+
 <blockquote class="tech">
 <p>有效提示 ＝ 目標 ＋ 必要上下文 ＋ 限制 ＋ 驗收方式</p>
 </blockquote>
@@ -1435,6 +1469,7 @@ function listActiveOrders(orders) {
 <li><code>/</code> 斜線命令＝<strong>選服務項目</strong>：「我要修理」「我要做保養」</li>
 <li><code>#</code> 井字號＝<strong>指定要看哪台車</strong>：「看這個檔案」「看這次的修改」</li>
 </ul>
+
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜一句提示的兩個零件</strong></p>
 <div class="mbox"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 291 266" style="max-width: 291px; min-width: 291px;" xmlns="http://www.w3.org/2000/svg" width="100%" id="yjm194"><style>#yjm194{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;fill:#2b2622;}#yjm194 .error-icon{fill:#dff1ea;}#yjm194 .error-text{fill:#200e15;stroke:#200e15;}#yjm194 .edge-thickness-normal{stroke-width:2px;}#yjm194 .edge-thickness-thick{stroke-width:3.5px;}#yjm194 .edge-pattern-solid{stroke-dasharray:0;}#yjm194 .edge-pattern-dashed{stroke-dasharray:3;}#yjm194 .edge-pattern-dotted{stroke-dasharray:2;}#yjm194 .marker{fill:#8d847b;stroke:#8d847b;}#yjm194 .marker.cross{stroke:#8d847b;}#yjm194 svg{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;}#yjm194 .label{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;color:#2b2622;}#yjm194 .cluster-label text{fill:#200e15;}#yjm194 .cluster-label span,#yjm194 p{color:#200e15;}#yjm194 .label text,#yjm194 span,#yjm194 p{fill:#2b2622;color:#2b2622;}#yjm194 .node rect,#yjm194 .node circle,#yjm194 .node ellipse,#yjm194 .node polygon,#yjm194 .node path{fill:#dceafa;stroke:#4a8fd6;stroke-width:1px;}#yjm194 .flowchart-label text{text-anchor:middle;}#yjm194 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#yjm194 .node .label{text-align:center;}#yjm194 .node.clickable{cursor:pointer;}#yjm194 .arrowheadPath{fill:#0b0b0b;}#yjm194 .edgePath .path{stroke:#8d847b;stroke-width:2.0px;}#yjm194 .flowchart-link{stroke:#8d847b;fill:none;}#yjm194 .edgeLabel{background-color:#fffdf9;text-align:center;}#yjm194 .edgeLabel rect{opacity:0.5;background-color:#fffdf9;fill:#fffdf9;}#yjm194 .labelBkg{background-color:rgba(255, 253, 249, 0.5);}#yjm194 .cluster rect{fill:#fbf7f1;stroke:#e6ded3;stroke-width:1px;}#yjm194 .cluster text{fill:#200e15;}#yjm194 .cluster span,#yjm194 p{color:#200e15;}#yjm194 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:12px;background:#dff1ea;border:1px solid hsl(156.6666666667, 0%, 80.9803921569%);border-radius:2px;pointer-events:none;z-index:100;}#yjm194 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2b2622;}#yjm194 :root{--mermaid-font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="6" viewBox="0 0 10 10" class="marker flowchart" id="yjm194-yjm194_flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart" id="yjm194-yjm194_flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="yjm194-yjm194_flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="yjm194-yjm194_flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm194-yjm194_flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm194-yjm194_flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#yjm194-yjm194_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-S LE-Q" id="yjm194-L-S-Q-0" d="M135,28.5L139.167,28.5C143.333,28.5,151.667,28.5,165.054,42.594C178.441,56.688,196.882,84.877,206.102,98.971L215.323,113.065"></path><path marker-end="url(#yjm194-yjm194_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-H LE-Q" id="yjm194-L-H-Q-0" d="M131.031,135.5L135.859,135.5C140.688,135.5,150.344,135.5,158.455,135.5C166.567,135.5,173.133,135.5,176.417,135.5L179.7,135.5"></path><path marker-end="url(#yjm194-yjm194_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-Q" id="yjm194-L-T-Q-0" d="M127.5,232L132.917,232C138.333,232,149.167,232,163.555,219.632C177.944,207.263,195.887,182.527,204.859,170.158L213.831,157.79"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(67.5, 28.5)" data-id="S" data-node="true" id="yjm194-flowchart-S-1552" class="node default default flowchart-label"><rect height="57" width="135" y="-28.5" x="-67.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-60, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="120"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">/fix<br>選服務項目：修錯</span></div></foreignObject></g></g><g transform="translate(230, 135.5)" data-id="Q" data-node="true" id="yjm194-flowchart-Q-1553" class="node default default flowchart-label"><rect height="36" width="90" y="-18" x="-45" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-37.5, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="75"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">送出的提示</span></div></foreignObject></g></g><g transform="translate(67.5, 135.5)" data-id="H" data-node="true" id="yjm194-flowchart-H-1554" class="node default default flowchart-label"><rect height="57" width="127.0625" y="-28.5" x="-63.53125" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-56.03125, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="112.0625"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">#file、#changes<br>指定看哪台車</span></div></foreignObject></g></g><g transform="translate(67.5, 232)" data-id="T" data-node="true" id="yjm194-flowchart-T-1556" class="node default default flowchart-label"><rect height="36" width="120" y="-18" x="-60" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-52.5, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="105"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">描述問題與預期</span></div></foreignObject></g></g></g></g></g></svg></div>
@@ -1499,6 +1534,7 @@ function listActiveOrders(orders) {
 <li>用邊界輸入驗證行為：空值、極端數字、重複資料、沒授權的請求。</li>
 <li>確認沒有把密碼、權杖、個資或公司機密貼進不該貼的地方。</li>
 </ul>
+
 <p class="tech">要它產生提交訊息時，先整理並檢查已暫存的差異，免得它把無關的變更包成一段看起來很完整的描述。</p>
 <p class="tech"><em>【安全底線】</em></p>
 <h2 id="ai-03-s7">跑得動，不代表能上線</h2>
@@ -1579,6 +1615,7 @@ function listActiveOrders(orders) {
 <li>斜線命令指定要做什麼，井字號指定看哪些材料，兩者用途不同。</li>
 <li>接受修改前看差異，接受之後跑測試與安全檢查。</li>
 </ul>
+
 <h2 id="ai-03-s8">隨堂測驗</h2>
 <p class="tech"><strong>Q1. 它生成了一段可以編譯的程式碼，最適當的下一步是什麼？</strong></p>
 <ul class="tech">
@@ -1587,6 +1624,7 @@ function listActiveOrders(orders) {
 <li>(C) 再生成一次，兩次一樣就代表正確</li>
 <li>(D) 只檢查排版，不看邊界條件</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 可以編譯只排除掉部分語法或型別問題，證明不了業務邏輯、安全性與邊界行為。</p>
@@ -1599,6 +1637,7 @@ function listActiveOrders(orders) {
 <li>(C) 不選取程式碼，直接把整個專案丟過去</li>
 <li>(D) 直接產生提交訊息</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 行內聊天就是為了以目前選取內容為中心的小範圍修改而設計的。</p>
@@ -1611,6 +1650,7 @@ function listActiveOrders(orders) {
 <li>(C) 寫測試，細節你自己決定</li>
 <li>(D) 先換框架、重構資料庫、部署，再順便補文件</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 好的提示有單一目標、具體範圍、必要限制，還有可以驗收的條件。</p>
@@ -1623,6 +1663,7 @@ function listActiveOrders(orders) {
 <li>(C) 專案檔案一律不能當上下文</li>
 <li>(D) 上下文只影響回應速度，不影響品質</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 上下文要足夠而且相關；雜訊太多會讓真正的限制被埋掉。</p>
@@ -1635,6 +1676,7 @@ function listActiveOrders(orders) {
 <li>(C) 斜線只提供檔案，井字號只執行部署</li>
 <li>(D) 兩者都能取代人工審查</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 前者說要做什麼，後者補上該根據哪些資料來做。</p>
@@ -1647,6 +1689,7 @@ function listActiveOrders(orders) {
 <li>(C) 只寫作者姓名</li>
 <li>(D) 貼一段跟這個函式無關的會議紀錄</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 具體而且跟任務相關的限制，能減少它自行猜測的空間。</p>
@@ -1659,6 +1702,7 @@ function listActiveOrders(orders) {
 <li>(C) 索引：建立專案的搜尋資料</li>
 <li>(D) 格式化：統一縮排</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 憑空編出介面是典型的模型幻覺，要靠版本、文件或實際執行來驗證。</p>
@@ -1671,6 +1715,7 @@ function listActiveOrders(orders) {
 <li>(C) 把所有權限開到最大，免得失敗</li>
 <li>(D) 略過輸出檢查以維持速度</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 系統指令可能刪檔、改權限或影響環境，必須先看清楚它會動到什麼。</p>
@@ -1704,6 +1749,7 @@ function listActiveOrders(orders) {
 <li>用計畫、影響範圍與核准點，讓代理人做事仍在你掌握裡</li>
 <li>知道專案指示檔放什麼、工作區索引能幫到什麼</li>
 </ul>
+
 <p class="tech"><em>【從回答問題到執行任務】</em></p>
 <h2 id="ai-04-s1">代理人像承包商，不只是顧問</h2>
 <blockquote class="story">
@@ -1795,6 +1841,7 @@ function listActiveOrders(orders) {
 <li><p>敏感檔案就算能被索引，也不代表適合交給模型處理。</p>
 </li>
 </ul>
+
 <p class="tech">如果回答漏掉了近期的修改，先檢查檔案是不是被忽略了、索引有沒有更新，以及它引用的檔案對不對。</p>
 <p class="tech"><em>【長期規範】</em></p>
 <h2 id="ai-04-s4">把常設規章寫進指示檔</h2>
@@ -1810,11 +1857,13 @@ function listActiveOrders(orders) {
 <li><code>.github/copilot-instructions.md</code>：放在儲存庫根目錄的 <code>.github</code> 資料夾裡，是給 Copilot 工作階段用、整個專案通用的指引。</li>
 <li><code>.github/instructions/</code> 底下的 <code>*.instructions.md</code>：用 <code>applyTo</code> 這個檔案路徑比對規則（glob，用萬用字元描述一批檔案路徑的寫法，例如 <code>'**/*.py'</code>）指定範圍，改到的檔案符合樣式時，VS Code 才自動附上。</li>
 </ul>
+
 <p class="tech">另外兩種不是 Copilot 自己的格式，一樣放在儲存庫根目錄：<a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">出處</a></p>
 <ul class="tech">
 <li><code>AGENTS.md</code>：跨工具通用的專案指引格式，Copilot 與 OpenAI Codex 等多套工具都支援。</li>
 <li><code>CLAUDE.md</code>：Claude 的工作階段在用的格式。VS Code 內建的代理會不會把它當成一直生效的指示，由 <code>chat.useClaudeMdFile</code> 控制，預設值 <code>true</code>，也就是預設會讀，要它別讀才需要動這個設定。<a href="https://code.visualstudio.com/docs/agents/reference/ai-settings">出處</a></li>
 </ul>
+
 <pre class="tech"><code>---
 applyTo: "**/*.test.ts"
 ---
@@ -1848,6 +1897,7 @@ applyTo: "**/*.test.ts"
 <li>會一直跑的指令，像<strong>叫人去排一個永遠不會叫號的隊</strong>，代理人就卡在那裡</li>
 <li>刪檔、部署這類動作像<strong>拆牆</strong>：先讓承包商說明要拆哪面、影響什麼，你點頭才動手</li>
 </ul>
+
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜不會結束的指令與破壞性動作</strong></p>
 <div class="mbox"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 471 619" style="max-width: 471px; min-width: 471px;" xmlns="http://www.w3.org/2000/svg" width="100%" id="yjm202"><style>#yjm202{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;fill:#2b2622;}#yjm202 .error-icon{fill:#dff1ea;}#yjm202 .error-text{fill:#200e15;stroke:#200e15;}#yjm202 .edge-thickness-normal{stroke-width:2px;}#yjm202 .edge-thickness-thick{stroke-width:3.5px;}#yjm202 .edge-pattern-solid{stroke-dasharray:0;}#yjm202 .edge-pattern-dashed{stroke-dasharray:3;}#yjm202 .edge-pattern-dotted{stroke-dasharray:2;}#yjm202 .marker{fill:#8d847b;stroke:#8d847b;}#yjm202 .marker.cross{stroke:#8d847b;}#yjm202 svg{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;}#yjm202 .label{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;color:#2b2622;}#yjm202 .cluster-label text{fill:#200e15;}#yjm202 .cluster-label span,#yjm202 p{color:#200e15;}#yjm202 .label text,#yjm202 span,#yjm202 p{fill:#2b2622;color:#2b2622;}#yjm202 .node rect,#yjm202 .node circle,#yjm202 .node ellipse,#yjm202 .node polygon,#yjm202 .node path{fill:#dceafa;stroke:#4a8fd6;stroke-width:1px;}#yjm202 .flowchart-label text{text-anchor:middle;}#yjm202 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#yjm202 .node .label{text-align:center;}#yjm202 .node.clickable{cursor:pointer;}#yjm202 .arrowheadPath{fill:#0b0b0b;}#yjm202 .edgePath .path{stroke:#8d847b;stroke-width:2.0px;}#yjm202 .flowchart-link{stroke:#8d847b;fill:none;}#yjm202 .edgeLabel{background-color:#fffdf9;text-align:center;}#yjm202 .edgeLabel rect{opacity:0.5;background-color:#fffdf9;fill:#fffdf9;}#yjm202 .labelBkg{background-color:rgba(255, 253, 249, 0.5);}#yjm202 .cluster rect{fill:#fbf7f1;stroke:#e6ded3;stroke-width:1px;}#yjm202 .cluster text{fill:#200e15;}#yjm202 .cluster span,#yjm202 p{color:#200e15;}#yjm202 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:12px;background:#dff1ea;border:1px solid hsl(156.6666666667, 0%, 80.9803921569%);border-radius:2px;pointer-events:none;z-index:100;}#yjm202 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2b2622;}#yjm202 :root{--mermaid-font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="6" viewBox="0 0 10 10" class="marker flowchart" id="yjm202-yjm202_flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart" id="yjm202-yjm202_flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="yjm202-yjm202_flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="yjm202-yjm202_flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm202-yjm202_flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm202-yjm202_flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#yjm202-yjm202_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-A" id="yjm202-L-C-A-0" d="M197.008,138.008L181.674,151.924C166.339,165.839,135.669,193.669,120.335,212.618C105,231.567,105,241.633,105,246.667L105,251.7"></path><path marker-end="url(#yjm202-yjm202_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-B" id="yjm202-L-C-B-0" d="M290.409,141.591L302.841,154.909C315.273,168.227,340.136,194.864,352.568,214.965C365,235.067,365,248.633,365,255.417L365,262.2"></path><path marker-end="url(#yjm202-yjm202_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-H" id="yjm202-L-B-H-0" d="M365,303.5L365,311.167C365,318.833,365,334.167,365.071,346.95C365.142,359.734,365.284,369.967,365.355,375.084L365.426,380.201"></path><path marker-end="url(#yjm202-yjm202_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-H LE-R" id="yjm202-L-H-R-0" d="M346.466,477.466L341.638,486.471C336.81,495.477,327.155,513.489,316.483,527.816C305.812,542.144,294.123,552.788,288.279,558.11L282.435,563.432"></path><path marker-end="url(#yjm202-yjm202_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-H LE-X" id="yjm202-L-H-X-0" d="M374.452,487.548L375.793,494.874C377.134,502.199,379.817,516.849,381.159,529.208C382.5,541.567,382.5,551.633,382.5,556.667L382.5,561.7"></path><path marker-end="url(#yjm202-yjm202_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-R" id="yjm202-L-C-R-0" d="M245.5,186.5L245.417,192.333C245.333,198.167,245.167,209.833,245.083,226.333C245,242.833,245,264.167,245,285.5C245,306.833,245,328.167,245,354C245,379.833,245,410.167,245,440.5C245,470.833,245,501.167,246.301,521.394C247.602,541.622,250.203,551.745,251.504,556.806L252.805,561.867"></path></g><g class="edgeLabels"><g transform="translate(105, 221.5)" class="edgeLabel"><g transform="translate(-97.5, -10.5)" class="label"><foreignObject height="21" width="195"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">會一直跑：伺服器、監看程序</span></div></foreignObject></g></g><g transform="translate(365, 221.5)" class="edgeLabel"><g transform="translate(-90, -10.5)" class="label"><foreignObject height="21" width="180"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">刪檔、改權限、遷移、部署</span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g transform="translate(317.5, 531.5)" class="edgeLabel"><g transform="translate(-7.5, -10.5)" class="label"><foreignObject height="21" width="15"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">是</span></div></foreignObject></g></g><g transform="translate(382.5, 531.5)" class="edgeLabel"><g transform="translate(-7.5, -10.5)" class="label"><foreignObject height="21" width="15"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">否</span></div></foreignObject></g></g><g transform="translate(245, 349.5)" class="edgeLabel"><g transform="translate(-52.5, -10.5)" class="label"><foreignObject height="21" width="105"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">一般讀取、測試</span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(245, 93)" data-id="C" data-node="true" id="yjm202-flowchart-C-1640" class="node default default flowchart-label"><polygon style="" transform="translate(-93,93)" class="label-container" points="93,0 186,-93 93,-186 0,-93"></polygon><g transform="translate(-67.5, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="135"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">代理人要執行的指令</span></div></foreignObject></g></g><g transform="translate(105, 285.5)" data-id="A" data-node="true" id="yjm202-flowchart-A-1642" class="node default default flowchart-label"><rect height="57" width="210" y="-28.5" x="-105" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-97.5, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="195"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">改用有結束條件的指令<br>或指定啟動、健康檢查、停止</span></div></foreignObject></g></g><g transform="translate(365, 285.5)" data-id="B" data-node="true" id="yjm202-flowchart-B-1644" class="node default default flowchart-label"><rect height="36" width="165" y="-18" x="-82.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-75, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="150"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">先顯示指令與影響範圍</span></div></foreignObject></g></g><g transform="translate(365, 440.5)" data-id="H" data-node="true" id="yjm202-flowchart-H-1646" class="node default default flowchart-label"><polygon style="" transform="translate(-55.5,55.5)" class="label-container" points="55.5,0 111,-55.5 55.5,-111 0,-55.5"></polygon><g transform="translate(-30, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="60"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">人核准？</span></div></foreignObject></g></g><g transform="translate(258.75, 585)" data-id="R" data-node="true" id="yjm202-flowchart-R-1648" class="node default default flowchart-label"><rect height="36" width="45" y="-18" x="-22.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-15, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="30"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">執行</span></div></foreignObject></g></g><g transform="translate(382.5, 585)" data-id="X" data-node="true" id="yjm202-flowchart-X-1650" class="node default default flowchart-label"><rect height="36" width="45" y="-18" x="-22.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-15, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="30"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">不做</span></div></foreignObject></g></g></g></g></g></svg></div>
@@ -1872,6 +1922,7 @@ applyTo: "**/*.test.ts"
 <li>安全、併發、資料遷移與回復流程要人工評估。</li>
 <li>把沒做完的事、做過的假設與已知風險寫進交付摘要。</li>
 </ul>
+
 <h3 id="ai-04-story">📖 本集故事總結</h3>
 <table>
 <thead>
@@ -1939,6 +1990,7 @@ applyTo: "**/*.test.ts"
 <li>指示檔放長期規範，單次任務仍要寫清楚目標與驗收條件。</li>
 <li>工具權限照最小權限給，終端機、資料庫與部署格外謹慎。</li>
 </ul>
+
 <h2 id="ai-04-s8">隨堂測驗</h2>
 <p class="tech"><strong>Q1. 哪一種工作最適合交給代理人模式？</strong></p>
 <ul class="tech">
@@ -1947,6 +1999,7 @@ applyTo: "**/*.test.ts"
 <li>(C) 只想看懂一行錯誤訊息，不做任何操作</li>
 <li>(D) 只想換編輯器的配色</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 代理人模式的價值在於能把規劃、工具與反覆驗證串起來，完成多步驟的任務。</p>
@@ -1959,6 +2012,7 @@ applyTo: "**/*.test.ts"
 <li>(C) 不寫驗收條件，讓它自己判斷</li>
 <li>(D) 只限制回應字數，不限制修改範圍</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 事前計畫加上明確的核准點，能讓你在真的改下去之前發現範圍或假設有問題。</p>
@@ -1971,6 +2025,7 @@ applyTo: "**/*.test.ts"
 <li>(C) 自動證明所有修改都沒有漏洞</li>
 <li>(D) 永久取代單元測試</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 索引改善的是搜尋與取用上下文，保證不了理解的完整或正確。</p>
@@ -1983,6 +2038,7 @@ applyTo: "**/*.test.ts"
 <li>(C) 今天下午三點提醒我開會</li>
 <li>(D) 正式環境的資料庫密碼</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 指示檔適合放長期、可檢查的專案規範，不適合放祕密或一次性的修改。</p>
@@ -1995,6 +2051,7 @@ applyTo: "**/*.test.ts"
 <li>(C) 只限制讀取，但永遠允許部署</li>
 <li>(D) 因為有人工審查，所以不必限制權限</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 權限縮小之後，錯誤、誤解或惡意內容造成的影響半徑才關得住。</p>
@@ -2007,6 +2064,7 @@ applyTo: "**/*.test.ts"
 <li>(C) 模型名稱只影響介面配色</li>
 <li>(D) 代理人模式不會用到模型</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 選模型是多因素的決定，而且會隨產品更新而變動。</p>
@@ -2019,6 +2077,7 @@ applyTo: "**/*.test.ts"
 <li>(C) 把同名的程序全部殺掉</li>
 <li>(D) 跳過驗證，直接宣告服務正常</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 長時間執行的程序需要可控的生命週期，流程才能繼續、資源才收得乾淨。</p>
@@ -2031,6 +2090,7 @@ applyTo: "**/*.test.ts"
 <li>(C) 只數一下改了幾個檔案</li>
 <li>(D) 只確認回答裡有沒有出現「完成」兩個字</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 它的摘要可能不完整，要用看得到的差異與執行證據來驗收。</p>
@@ -2065,6 +2125,7 @@ applyTo: "**/*.test.ts"
 <li>把工作區外的儲存庫、網頁指給它看</li>
 <li>把外部內容當成不可信的資料，避開提示注入</li>
 </ul>
+
 <p class="tech"><em>【先講 MCP】</em></p>
 <h2 id="ai-05-s1">替 AI 工具準備一個通用插座</h2>
 <blockquote class="story">
@@ -2199,6 +2260,7 @@ applyTo: "**/*.test.ts"
 <li><p>定期把不用的伺服器、權杖與權限清掉。</p>
 </li>
 </ul>
+
 <p class="tech">現成的伺服器很多（瀏覽器操作、雲端服務查詢、設計稿轉程式碼、聯網搜尋、抓網頁、查時間都有人做），有些還搭配自己的付費方案與額度。這類清單與價格變動很快，挑伺服器該從任務與風險出發，不要只因為「熱門推薦」就裝上去。</p>
 <p class="tech"><em>【除錯】</em></p>
 <h2 id="ai-05-s5">連線、能力、權限、業務邏輯分開查</h2>
@@ -2215,6 +2277,7 @@ applyTo: "**/*.test.ts"
 <li>權限層：這個帳號到底准不准存取目標資源。</li>
 <li>業務層：工具跑成功了，結果是不是真的符合需求。</li>
 </ul>
+
 <p class="tech"><em>【四種客製化元件】</em></p>
 <h2 id="ai-05-s6">規則、任務、角色、工具不要混在一起</h2>
 <blockquote class="story">
@@ -2285,6 +2348,7 @@ applyTo: "**/*.test.ts"
 <li><code>description</code>：在工具選單裡顯示的說明。</li>
 <li><code>icon</code>：圖示。</li>
 </ul>
+
 <p class="tech">VS Code 自己也內建了幾組，每組把相關的工具包在一起：<code>#read</code>（讀工作區的檔案與執行輸出）、<code>#search</code>（搜工作區）、<code>#edit</code>（改工作區的檔案與 Notebook，也就是可以邊寫程式邊看執行結果的那種檔案）、<code>#execute</code>（執行指令、任務與 Notebook 的儲存格）、<code>#web</code>（取用網頁內容）、<code>#browser</code>（用瀏覽器工具瀏覽、檢查與操作頁面）、<code>#agent</code>（把工作分派給子代理人）。<a href="https://code.visualstudio.com/docs/agents/reference/tools-reference">出處</a></p>
 <p class="tech"><em>【自訂代理人】</em></p>
 <h2 id="ai-05-s8">同一套工具，換個角色用</h2>
@@ -2564,6 +2628,7 @@ description: 審查指定介面的授權風險
 <li>外部內容可能夾帶提示注入，一律當成資料而不是命令。</li>
 <li>有副作用的工具呼叫都照最小權限給、留紀錄、設人工核准點。</li>
 </ul>
+
 <h2 id="ai-05-s14">隨堂測驗</h2>
 <p class="tech"><strong>Q1. 把 MCP 比喻成「AI 世界的 USB-C」，主要是在講什麼？</strong></p>
 <ul class="tech">
@@ -2572,6 +2637,7 @@ description: 審查指定介面的授權風險
 <li>(C) 接上 MCP 之後就不必做認證與授權</li>
 <li>(D) MCP 只負責替電腦供電</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 這個比喻強調的是介面標準化，不是說所有服務都一樣，也不是說接上就安全。</p>
@@ -2584,6 +2650,7 @@ description: 審查指定介面的授權風險
 <li>(C) 取代每一台 MCP 伺服器</li>
 <li>(D) 只負責產生 JSON</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 主機是使用者實際操作的那支應用程式，負責協調模型與外部能力。</p>
@@ -2596,6 +2663,7 @@ description: 審查指定介面的授權風險
 <li>(C) 資源可以任意部署，工具永遠唯讀</li>
 <li>(D) 兩者完全相同，只是名稱不同</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 工具代表可以呼叫的操作，資源代表可以取得的內容；實際支援還是看各產品的實作。</p>
@@ -2608,6 +2676,7 @@ description: 審查指定介面的授權風險
 <li>(C) 有沒有要求最高的系統權限</li>
 <li>(D) 能不能把稽核紀錄全部關掉</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 伺服器可能碰到敏感資料或執行操作，得先弄懂它的來源與權限風險。</p>
@@ -2620,6 +2689,7 @@ description: 審查指定介面的授權風險
 <li>(C) 只有今天有效、也沒有驗收方式的臨時閒聊</li>
 <li>(D) 把所有團隊規範跟所有任務混成一大段文字</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 提示檔適合封裝可重複、可帶參數而且驗得出結果的任務。</p>
@@ -2632,6 +2702,7 @@ description: 審查指定介面的授權風險
 <li>(C) 指示檔一定會執行指令，提示檔永遠不能引用工具</li>
 <li>(D) 兩者都只是程式碼格式化工具</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 前者定義長期的行為邊界，後者封裝具體的工作流程。</p>
@@ -2644,6 +2715,7 @@ description: 審查指定介面的授權風險
 <li>(C) 提示注入只會改變字型</li>
 <li>(D) 只要用 HTTPS 就不會出現提示注入</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 傳輸加密保證不了內容可信；外部內容只能當資料，不能當高權限的命令。</p>
@@ -2656,6 +2728,7 @@ description: 審查指定介面的授權風險
 <li>(C) 只看回應夠不夠長</li>
 <li>(D) 只要工具沒報錯就直接上正式環境</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 可靠的驗收靠的是看得到的證據，不是模型對自己結果的宣告。</p>
@@ -2668,6 +2741,7 @@ description: 審查指定介面的授權風險
 <li>(C) 提示檔</li>
 <li>(D) 指示檔</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 四者分工不同：工具組只管把工具打包成一個名字，自訂代理人管角色與可用工具的邊界，提示檔是可重跑的任務範本，指示檔是長期規範。</p>
@@ -2680,6 +2754,7 @@ description: 審查指定介面的授權風險
 <li>(C) #search/codebase</li>
 <li>(D) #browser</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> #githubRepo 是對某個儲存庫做語意搜尋；#web/fetch 抓的是某一頁網頁，#search/codebase 搜的是你目前這個工作區，#browser 是操作內建瀏覽器。</p>
@@ -2713,6 +2788,7 @@ description: 審查指定介面的授權風險
 <li>分清給人用的身分與給服務用的角色</li>
 <li>知道預算警示能做什麼、不能做什麼</li>
 </ul>
+
 <p class="tech"><em>【先看全貌】</em></p>
 <h2 id="ai-06-s1">平台、模型與文件各司其職</h2>
 <blockquote class="story">
@@ -2759,6 +2835,7 @@ EC2 上的 Dify
 <li>IAM 角色＝給<strong>機器</strong>掛的臨時通行證，要用時才領</li>
 <li>MFA＝刷卡之外還要<strong>按指紋</strong></li>
 </ul>
+
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜人用使用者身分，機器用角色</strong></p>
 <div class="mbox"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 461.86328125 287" style="max-width: 461.863px; min-width: 461.863px;" xmlns="http://www.w3.org/2000/svg" width="100%" id="yjm219"><style>#yjm219{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;fill:#2b2622;}#yjm219 .error-icon{fill:#dff1ea;}#yjm219 .error-text{fill:#200e15;stroke:#200e15;}#yjm219 .edge-thickness-normal{stroke-width:2px;}#yjm219 .edge-thickness-thick{stroke-width:3.5px;}#yjm219 .edge-pattern-solid{stroke-dasharray:0;}#yjm219 .edge-pattern-dashed{stroke-dasharray:3;}#yjm219 .edge-pattern-dotted{stroke-dasharray:2;}#yjm219 .marker{fill:#8d847b;stroke:#8d847b;}#yjm219 .marker.cross{stroke:#8d847b;}#yjm219 svg{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;}#yjm219 .label{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;color:#2b2622;}#yjm219 .cluster-label text{fill:#200e15;}#yjm219 .cluster-label span,#yjm219 p{color:#200e15;}#yjm219 .label text,#yjm219 span,#yjm219 p{fill:#2b2622;color:#2b2622;}#yjm219 .node rect,#yjm219 .node circle,#yjm219 .node ellipse,#yjm219 .node polygon,#yjm219 .node path{fill:#dceafa;stroke:#4a8fd6;stroke-width:1px;}#yjm219 .flowchart-label text{text-anchor:middle;}#yjm219 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#yjm219 .node .label{text-align:center;}#yjm219 .node.clickable{cursor:pointer;}#yjm219 .arrowheadPath{fill:#0b0b0b;}#yjm219 .edgePath .path{stroke:#8d847b;stroke-width:2.0px;}#yjm219 .flowchart-link{stroke:#8d847b;fill:none;}#yjm219 .edgeLabel{background-color:#fffdf9;text-align:center;}#yjm219 .edgeLabel rect{opacity:0.5;background-color:#fffdf9;fill:#fffdf9;}#yjm219 .labelBkg{background-color:rgba(255, 253, 249, 0.5);}#yjm219 .cluster rect{fill:#fbf7f1;stroke:#e6ded3;stroke-width:1px;}#yjm219 .cluster text{fill:#200e15;}#yjm219 .cluster span,#yjm219 p{color:#200e15;}#yjm219 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:12px;background:#dff1ea;border:1px solid hsl(156.6666666667, 0%, 80.9803921569%);border-radius:2px;pointer-events:none;z-index:100;}#yjm219 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2b2622;}#yjm219 :root{--mermaid-font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="6" viewBox="0 0 10 10" class="marker flowchart" id="yjm219-yjm219_flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart" id="yjm219-yjm219_flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="yjm219-yjm219_flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="yjm219-yjm219_flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm219-yjm219_flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm219-yjm219_flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#yjm219-yjm219_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-G LE-U" id="yjm219-L-G-U-0" d="M181.379,164L181.379,168.167C181.379,172.333,181.379,180.667,181.379,188.117C181.379,195.567,181.379,202.133,181.379,205.417L181.379,208.7"></path><path marker-end="url(#yjm219-yjm219_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-P LE-G" id="yjm219-L-P-G-0" d="M243.501,46.5L233.148,52.417C222.794,58.333,202.086,70.167,191.733,79.367C181.379,88.567,181.379,95.133,181.379,98.417L181.379,101.7"></path><path marker-end="url(#yjm219-yjm219_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-P LE-RO" id="yjm219-L-P-RO-0" d="M306.499,46.5L316.852,52.417C327.206,58.333,347.914,70.167,358.267,79.367C368.621,88.567,368.621,95.133,368.621,98.417L368.621,101.7"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(82.5, 28.5)" data-id="R" data-node="true" id="yjm219-flowchart-R-1793" class="node default default flowchart-label"><rect height="57" width="165" y="-28.5" x="-82.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-75, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="150"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">Root 使用者<br>保險箱總鑰匙：鎖起來</span></div></foreignObject></g></g><g transform="translate(181.37890625, 242.5)" data-id="U" data-node="true" id="yjm219-flowchart-U-1794" class="node default default flowchart-label"><rect height="57" width="138.375" y="-28.5" x="-69.1875" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-61.6875, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="123.375"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">IAM 使用者＋MFA<br>阿禾日常操作</span></div></foreignObject></g></g><g transform="translate(181.37890625, 135.5)" data-id="G" data-node="true" id="yjm219-flowchart-G-1795" class="node default default flowchart-label"><rect height="57" width="120" y="-28.5" x="-60" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-52.5, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="105"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">IAM 群組<br>一群人共用政策</span></div></foreignObject></g></g><g transform="translate(368.62109375, 135.5)" data-id="RO" data-node="true" id="yjm219-flowchart-RO-1796" class="node default default flowchart-label"><rect height="57" width="154.484375" y="-28.5" x="-77.2421875" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-69.7421875, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="139.484375"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">IAM 角色<br>EC2 掛的臨時通行證</span></div></foreignObject></g></g><g transform="translate(275, 28.5)" data-id="P" data-node="true" id="yjm219-flowchart-P-1797" class="node default default flowchart-label"><rect height="36" width="120" y="-18" x="-60" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-52.5, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="105"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">政策：最小權限</span></div></foreignObject></g></g></g></g></g></svg></div>
@@ -2825,6 +2902,7 @@ EC2 上的 Dify
 <li>路由表＝<strong>路標</strong>，網際網路閘道＝<strong>社區大門</strong></li>
 <li>安全群組＝每棟房子的<strong>門禁</strong>，決定誰能進門</li>
 </ul>
+
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜社區、路標、大門與門禁</strong></p>
 <div class="mbox"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 825.640625 218.5" style="max-width: 825.641px; min-width: 620px;" xmlns="http://www.w3.org/2000/svg" width="100%" id="yjm221"><style>#yjm221{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;fill:#2b2622;}#yjm221 .error-icon{fill:#dff1ea;}#yjm221 .error-text{fill:#200e15;stroke:#200e15;}#yjm221 .edge-thickness-normal{stroke-width:2px;}#yjm221 .edge-thickness-thick{stroke-width:3.5px;}#yjm221 .edge-pattern-solid{stroke-dasharray:0;}#yjm221 .edge-pattern-dashed{stroke-dasharray:3;}#yjm221 .edge-pattern-dotted{stroke-dasharray:2;}#yjm221 .marker{fill:#8d847b;stroke:#8d847b;}#yjm221 .marker.cross{stroke:#8d847b;}#yjm221 svg{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;}#yjm221 .label{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;color:#2b2622;}#yjm221 .cluster-label text{fill:#200e15;}#yjm221 .cluster-label span,#yjm221 p{color:#200e15;}#yjm221 .label text,#yjm221 span,#yjm221 p{fill:#2b2622;color:#2b2622;}#yjm221 .node rect,#yjm221 .node circle,#yjm221 .node ellipse,#yjm221 .node polygon,#yjm221 .node path{fill:#dceafa;stroke:#4a8fd6;stroke-width:1px;}#yjm221 .flowchart-label text{text-anchor:middle;}#yjm221 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#yjm221 .node .label{text-align:center;}#yjm221 .node.clickable{cursor:pointer;}#yjm221 .arrowheadPath{fill:#0b0b0b;}#yjm221 .edgePath .path{stroke:#8d847b;stroke-width:2.0px;}#yjm221 .flowchart-link{stroke:#8d847b;fill:none;}#yjm221 .edgeLabel{background-color:#fffdf9;text-align:center;}#yjm221 .edgeLabel rect{opacity:0.5;background-color:#fffdf9;fill:#fffdf9;}#yjm221 .labelBkg{background-color:rgba(255, 253, 249, 0.5);}#yjm221 .cluster rect{fill:#fbf7f1;stroke:#e6ded3;stroke-width:1px;}#yjm221 .cluster text{fill:#200e15;}#yjm221 .cluster span,#yjm221 p{color:#200e15;}#yjm221 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:12px;background:#dff1ea;border:1px solid hsl(156.6666666667, 0%, 80.9803921569%);border-radius:2px;pointer-events:none;z-index:100;}#yjm221 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2b2622;}#yjm221 :root{--mermaid-font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="6" viewBox="0 0 10 10" class="marker flowchart" id="yjm221-yjm221_flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart" id="yjm221-yjm221_flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="yjm221-yjm221_flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="yjm221-yjm221_flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm221-yjm221_flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm221-yjm221_flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"><g id="yjm221-VPC" class="cluster default flowchart-label"><rect height="202.5" width="529.640625" y="0" x="280" ry="0" rx="0" style=""></rect><g transform="translate(477.25, 0)" class="cluster-label"><foreignObject height="21" width="135.140625"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">VPC：有圍牆的社區</span></div></foreignObject></g></g></g><g class="edgePaths"><path marker-end="url(#yjm221-yjm221_flowchart-pointEnd)" marker-start="url(#yjm221-yjm221_flowchart-pointStart)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-I LE-IGW" id="yjm221-L-I-IGW-0" d="M80.3,101.25L83.583,101.25C86.867,101.25,93.433,101.25,100,101.25C106.567,101.25,113.133,101.25,116.417,101.25L119.7,101.25"></path><path marker-end="url(#yjm221-yjm221_flowchart-pointEnd)" marker-start="url(#yjm221-yjm221_flowchart-pointStart)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-IGW LE-RT" id="yjm221-L-IGW-RT-0" d="M235.3,101.25L238.583,101.25C241.867,101.25,248.433,101.25,255.883,101.25C263.333,101.25,271.667,101.25,279.117,101.25C286.567,101.25,293.133,101.25,296.417,101.25L299.7,101.25"></path><path marker-end="url(#yjm221-yjm221_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-RT LE-S1" id="yjm221-L-RT-S1-0" d="M365,77.795L369.167,74.538C373.333,71.28,381.667,64.765,389.141,61.508C396.616,58.25,403.232,58.25,406.54,58.25L409.848,58.25"></path><path marker-end="url(#yjm221-yjm221_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-RT LE-S2" id="yjm221-L-RT-S2-0" d="M365,124.705L369.167,127.962C373.333,131.22,381.667,137.735,389.117,140.992C396.567,144.25,403.133,144.25,406.417,144.25L409.7,144.25"></path><path marker-end="url(#yjm221-yjm221_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-S1 LE-SG" id="yjm221-L-S1-SG-0" d="M520.008,58.25L524.199,58.25C528.391,58.25,536.773,58.25,544.248,58.25C551.723,58.25,558.29,58.25,561.573,58.25L564.856,58.25"></path><path marker-end="url(#yjm221-yjm221_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-SG LE-E" id="yjm221-L-SG-E-0" d="M690.156,58.25L694.323,58.25C698.49,58.25,706.823,58.25,714.273,58.25C721.723,58.25,728.29,58.25,731.573,58.25L734.856,58.25"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(467.578125, 58.25)" data-id="S1" data-node="true" id="yjm221-flowchart-S1-1817" class="node default default flowchart-label"><rect height="36" width="104.859375" y="-18" x="-52.4296875" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-44.9296875, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="89.859375"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">公有子網路 A</span></div></foreignObject></g></g><g transform="translate(335, 101.25)" data-id="RT" data-node="true" id="yjm221-flowchart-RT-1815" class="node default default flowchart-label"><rect height="57" width="60" y="-28.5" x="-30" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-22.5, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="45"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">路由表<br>路標</span></div></foreignObject></g></g><g transform="translate(467.578125, 144.25)" data-id="S2" data-node="true" id="yjm221-flowchart-S2-1819" class="node default default flowchart-label"><rect height="36" width="105.15625" y="-18" x="-52.578125" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-45.078125, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="90.15625"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">公有子網路 B</span></div></foreignObject></g></g><g transform="translate(762.3984375, 58.25)" data-id="E" data-node="true" id="yjm221-flowchart-E-1822" class="node default default flowchart-label"><rect height="36" width="44.484375" y="-18" x="-22.2421875" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-14.7421875, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="29.484375"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">EC2</span></div></foreignObject></g></g><g transform="translate(630.15625, 58.25)" data-id="SG" data-node="true" id="yjm221-flowchart-SG-1821" class="node default default flowchart-label"><rect height="36" width="120" y="-18" x="-60" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-52.5, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="105"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">安全群組：門禁</span></div></foreignObject></g></g><g transform="translate(37.5, 101.25)" data-id="I" data-node="true" id="yjm221-flowchart-I-1812" class="node default default flowchart-label"><rect height="36" width="75" y="-18" x="-37.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-30, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="60"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">網際網路</span></div></foreignObject></g></g><g transform="translate(177.5, 101.25)" data-id="IGW" data-node="true" id="yjm221-flowchart-IGW-1813" class="node default default flowchart-label"><rect height="57" width="105" y="-28.5" x="-52.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-45, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="90"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">網際網路閘道<br>社區大門</span></div></foreignObject></g></g></g></g></g></svg></div>
@@ -3035,6 +3113,7 @@ EC2 上的 Dify
 <li>EC2 跑平台、S3 存文件、Bedrock 出模型算力，三者分工不要混。</li>
 <li>同一條指令在掛角色前後結果不同，就是權限設定有效的證據。</li>
 </ul>
+
 <h2 id="ai-06-s10">隨堂測驗</h2>
 <p class="tech"><strong>Q1. 為什麼不建議把長期的 AWS 金鑰直接寫在 EC2 裡的程式中？</strong></p>
 <ul class="tech">
@@ -3043,6 +3122,7 @@ EC2 上的 Dify
 <li>(C) 改用角色之後，所有 AWS 服務都會自動開放</li>
 <li>(D) 長期金鑰只能拿來登入帳務頁面</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 角色讓機器取得暫時憑證，也能用政策限制它能做哪些動作、動哪些資源。</p>
@@ -3055,6 +3135,7 @@ EC2 上的 Dify
 <li>(C) 它只統計模型服務，不含其他 AWS 服務</li>
 <li>(D) 它代表這個月的帳單不可能再增加</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 警示幫你及早發現成本，但預設不是自動停機的機制。</p>
@@ -3067,6 +3148,7 @@ EC2 上的 Dify
 <li>(C) Bedrock 負責網路路由，EC2 只保存帳單</li>
 <li>(D) 使用者身分執行模型推論，硬碟負責使用者登入</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 三者分別處理應用程式平台、物件儲存與模型算力。</p>
@@ -3079,6 +3161,7 @@ EC2 上的 Dify
 <li>(C) SSH 流量會自動轉成 HTTPS</li>
 <li>(D) 所有人都會自動拿到主機密碼</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 這條規則放開的是網路來源範圍；雖然不等於自動登入成功，風險仍然明顯。</p>
@@ -3091,6 +3174,7 @@ EC2 上的 Dify
 <li>(C) 公有 IP 本身會給予 S3 的管理權</li>
 <li>(D) 裝了容器環境就會自動建立 AWS 權限</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 同一台機器、同一條指令，只有權限變了就結果不同，變因就在角色。</p>
@@ -3103,6 +3187,7 @@ EC2 上的 Dify
 <li>(C) 在同一個區域內唯一就好</li>
 <li>(D) 完全沒有唯一性要求</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 名稱在分區內共用同一個命名空間，所以要挑一個夠特別、不會撞名的。</p>
@@ -3115,6 +3200,7 @@ EC2 上的 Dify
 <li>(C) Bucket 名稱有沒有包含日期</li>
 <li>(D) 提示要不要用英文寫</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 先由工作負載推導硬體規格，上線之後再用監控資料調整。</p>
@@ -3127,6 +3213,7 @@ EC2 上的 Dify
 <li>(C) 把所有安全群組的連接埠對全世界開放</li>
 <li>(D) 在程式碼裡加上根使用者密碼</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 模型在哪些區域可用、有沒有取得授權、應用怎麼設定，共同決定連得上連不上。</p>
@@ -3160,6 +3247,7 @@ EC2 上的 Dify
 <li>知道為什麼模型要靠外部工具才知道現在幾點</li>
 <li>用日誌與防護規則看住會動手的助理</li>
 </ul>
+
 <p class="tech"><em>【從需求到流程】</em></p>
 <h2 id="ai-07-s1">讓助理同時具備知識與行動能力</h2>
 <blockquote class="story">
@@ -3171,6 +3259,7 @@ EC2 上的 Dify
 <li>工具＝<strong>電話和報名表</strong></li>
 <li>工作流＝<strong>標準作業程序（SOP）</strong></li>
 </ul>
+
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜櫃檯、資料櫃、電話表單、SOP</strong></p>
 <div class="mbox"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 351 308" style="max-width: 351px; min-width: 351px;" xmlns="http://www.w3.org/2000/svg" width="100%" id="yjm226"><style>#yjm226{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;fill:#2b2622;}#yjm226 .error-icon{fill:#dff1ea;}#yjm226 .error-text{fill:#200e15;stroke:#200e15;}#yjm226 .edge-thickness-normal{stroke-width:2px;}#yjm226 .edge-thickness-thick{stroke-width:3.5px;}#yjm226 .edge-pattern-solid{stroke-dasharray:0;}#yjm226 .edge-pattern-dashed{stroke-dasharray:3;}#yjm226 .edge-pattern-dotted{stroke-dasharray:2;}#yjm226 .marker{fill:#8d847b;stroke:#8d847b;}#yjm226 .marker.cross{stroke:#8d847b;}#yjm226 svg{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;}#yjm226 .label{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;color:#2b2622;}#yjm226 .cluster-label text{fill:#200e15;}#yjm226 .cluster-label span,#yjm226 p{color:#200e15;}#yjm226 .label text,#yjm226 span,#yjm226 p{fill:#2b2622;color:#2b2622;}#yjm226 .node rect,#yjm226 .node circle,#yjm226 .node ellipse,#yjm226 .node polygon,#yjm226 .node path{fill:#dceafa;stroke:#4a8fd6;stroke-width:1px;}#yjm226 .flowchart-label text{text-anchor:middle;}#yjm226 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#yjm226 .node .label{text-align:center;}#yjm226 .node.clickable{cursor:pointer;}#yjm226 .arrowheadPath{fill:#0b0b0b;}#yjm226 .edgePath .path{stroke:#8d847b;stroke-width:2.0px;}#yjm226 .flowchart-link{stroke:#8d847b;fill:none;}#yjm226 .edgeLabel{background-color:#fffdf9;text-align:center;}#yjm226 .edgeLabel rect{opacity:0.5;background-color:#fffdf9;fill:#fffdf9;}#yjm226 .labelBkg{background-color:rgba(255, 253, 249, 0.5);}#yjm226 .cluster rect{fill:#fbf7f1;stroke:#e6ded3;stroke-width:1px;}#yjm226 .cluster text{fill:#200e15;}#yjm226 .cluster span,#yjm226 p{color:#200e15;}#yjm226 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:12px;background:#dff1ea;border:1px solid hsl(156.6666666667, 0%, 80.9803921569%);border-radius:2px;pointer-events:none;z-index:100;}#yjm226 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2b2622;}#yjm226 :root{--mermaid-font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="6" viewBox="0 0 10 10" class="marker flowchart" id="yjm226-yjm226_flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart" id="yjm226-yjm226_flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="yjm226-yjm226_flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="yjm226-yjm226_flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm226-yjm226_flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm226-yjm226_flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#yjm226-yjm226_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-U LE-M" id="yjm226-L-U-M-0" d="M112.5,46.5L112.5,54.167C112.5,61.833,112.5,77.167,121.556,90.855C130.612,104.543,148.724,116.587,157.781,122.609L166.837,128.63"></path><path marker-end="url(#yjm226-yjm226_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-M LE-K" id="yjm226-L-M-K-0" d="M173.458,185L168.298,189.167C163.139,193.333,152.819,201.667,147.66,209.117C142.5,216.567,142.5,223.133,142.5,226.417L142.5,229.7"></path><path marker-end="url(#yjm226-yjm226_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-M LE-T" id="yjm226-L-M-T-0" d="M244.042,185L249.202,189.167C254.361,193.333,264.681,201.667,269.84,209.117C275,216.567,275,223.133,275,226.417L275,229.7"></path><path marker-end="url(#yjm226-yjm226_flowchart-pointEnd)" style="fill:none;stroke-width:2px;stroke-dasharray:3;" class="edge-thickness-normal edge-pattern-dotted flowchart-link LS-W LE-M" id="yjm226-L-W-M-0" d="M305,57L305,62.917C305,68.833,305,80.667,295.944,92.605C286.888,104.543,268.776,116.587,259.719,122.609L250.663,128.63"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g transform="translate(305, 92.5)" class="edgeLabel"><g transform="translate(-30, -10.5)" class="label"><foreignObject height="21" width="60"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">規範順序</span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(112.5, 28.5)" data-id="U" data-node="true" id="yjm226-flowchart-U-1840" class="node default default flowchart-label"><rect height="36" width="225" y="-18" x="-112.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-105, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="210"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">學生：下週有什麼課？幫我報名</span></div></foreignObject></g></g><g transform="translate(208.75, 156.5)" data-id="M" data-node="true" id="yjm226-flowchart-M-1841" class="node default default flowchart-label"><rect height="57" width="75" y="-28.5" x="-37.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-30, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="60"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">模型<br>櫃檯人員</span></div></foreignObject></g></g><g transform="translate(142.5, 263.5)" data-id="K" data-node="true" id="yjm226-flowchart-K-1843" class="node default default flowchart-label"><rect height="57" width="60" y="-28.5" x="-30" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-22.5, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="45"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">知識庫<br>資料櫃</span></div></foreignObject></g></g><g transform="translate(275, 263.5)" data-id="T" data-node="true" id="yjm226-flowchart-T-1845" class="node default default flowchart-label"><rect height="57" width="105" y="-28.5" x="-52.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-45, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="90"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">工具<br>電話與報名表</span></div></foreignObject></g></g><g transform="translate(305, 28.5)" data-id="W" data-node="true" id="yjm226-flowchart-W-1846" class="node default default flowchart-label"><rect height="57" width="60" y="-28.5" x="-30" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-22.5, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="45"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">工作流<br>SOP</span></div></foreignObject></g></g></g></g></g></svg></div>
@@ -3318,6 +3407,7 @@ EC2 上的 Dify
 <li>對話紀錄＝每次都把<strong>整本逐字稿重印</strong>給新同事看，越來越厚，還容易漏看</li>
 <li>變數記憶＝把重點寫在<strong>客戶資料卡</strong>上：姓名、偏好語言、會員等級，一眼就看到</li>
 </ul>
+
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜逐字稿和資料卡</strong></p>
 <div class="mbox"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 1050 243" style="max-width: 1050px; min-width: 620px;" xmlns="http://www.w3.org/2000/svg" width="100%" id="yjm232"><style>#yjm232{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;fill:#2b2622;}#yjm232 .error-icon{fill:#dff1ea;}#yjm232 .error-text{fill:#200e15;stroke:#200e15;}#yjm232 .edge-thickness-normal{stroke-width:2px;}#yjm232 .edge-thickness-thick{stroke-width:3.5px;}#yjm232 .edge-pattern-solid{stroke-dasharray:0;}#yjm232 .edge-pattern-dashed{stroke-dasharray:3;}#yjm232 .edge-pattern-dotted{stroke-dasharray:2;}#yjm232 .marker{fill:#8d847b;stroke:#8d847b;}#yjm232 .marker.cross{stroke:#8d847b;}#yjm232 svg{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;}#yjm232 .label{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;color:#2b2622;}#yjm232 .cluster-label text{fill:#200e15;}#yjm232 .cluster-label span,#yjm232 p{color:#200e15;}#yjm232 .label text,#yjm232 span,#yjm232 p{fill:#2b2622;color:#2b2622;}#yjm232 .node rect,#yjm232 .node circle,#yjm232 .node ellipse,#yjm232 .node polygon,#yjm232 .node path{fill:#dceafa;stroke:#4a8fd6;stroke-width:1px;}#yjm232 .flowchart-label text{text-anchor:middle;}#yjm232 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#yjm232 .node .label{text-align:center;}#yjm232 .node.clickable{cursor:pointer;}#yjm232 .arrowheadPath{fill:#0b0b0b;}#yjm232 .edgePath .path{stroke:#8d847b;stroke-width:2.0px;}#yjm232 .flowchart-link{stroke:#8d847b;fill:none;}#yjm232 .edgeLabel{background-color:#fffdf9;text-align:center;}#yjm232 .edgeLabel rect{opacity:0.5;background-color:#fffdf9;fill:#fffdf9;}#yjm232 .labelBkg{background-color:rgba(255, 253, 249, 0.5);}#yjm232 .cluster rect{fill:#fbf7f1;stroke:#e6ded3;stroke-width:1px;}#yjm232 .cluster text{fill:#200e15;}#yjm232 .cluster span,#yjm232 p{color:#200e15;}#yjm232 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:12px;background:#dff1ea;border:1px solid hsl(156.6666666667, 0%, 80.9803921569%);border-radius:2px;pointer-events:none;z-index:100;}#yjm232 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2b2622;}#yjm232 :root{--mermaid-font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="6" viewBox="0 0 10 10" class="marker flowchart" id="yjm232-yjm232_flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart" id="yjm232-yjm232_flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="yjm232-yjm232_flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="yjm232-yjm232_flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm232-yjm232_flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm232-yjm232_flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"><g id="yjm232-H" class="cluster default flowchart-label"><rect height="106" width="804" y="0" x="0" ry="0" rx="0" style=""></rect><g transform="translate(372, 0)" class="cluster-label"><foreignObject height="21" width="60"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">對話紀錄</span></div></foreignObject></g></g></g><g class="edgePaths"><path marker-end="url(#yjm232-yjm232_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-H1 LE-H2" id="yjm232-L-H1-H2-0" d="M238.008,53L267.507,53C297.005,53,356.003,53,395.951,53C435.9,53,456.8,53,467.25,53L477.7,53"></path><path marker-end="url(#yjm232-yjm232_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-H2 LE-H3" id="yjm232-L-H2-H3-0" d="M547,53L558.333,53C569.667,53,592.333,53,606.95,53C621.567,53,628.133,53,631.417,53L634.7,53"></path><path marker-end="url(#yjm232-yjm232_flowchart-pointEnd)" style="fill:none;stroke-width:2px;stroke-dasharray:3;" class="edge-thickness-normal edge-pattern-dotted flowchart-link LS-H3 LE-X" id="yjm232-L-H3-X-0" d="M779,53L783.167,53C787.333,53,795.667,53,812.75,53C829.833,53,855.667,53,880.617,53C905.567,53,929.633,53,941.667,53L953.7,53"></path><path marker-end="url(#yjm232-yjm232_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-V LE-OK" id="yjm232-L-V-OK-0" d="M390,184L394.167,184C398.333,184,406.667,184,414.117,184C421.567,184,428.133,184,431.417,184L434.7,184"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g transform="translate(881.5, 53)" class="edgeLabel"><g transform="translate(-52.5, -10.5)" class="label"><foreignObject height="21" width="105"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">成本漲、容易漏</span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(17.5, 133)" class="root"><g class="clusters"><g id="yjm232-V" class="cluster default flowchart-label"><rect height="86" width="365" y="8" x="8" ry="0" rx="0" style=""></rect><g transform="translate(115.5, 8)" class="cluster-label"><foreignObject height="21" width="150"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">變數記憶：客戶資料卡</span></div></foreignObject></g></g></g><g class="edgePaths"></g><g class="edgeLabels"></g><g class="nodes"><g transform="translate(65.5, 51)" data-id="V1" data-node="true" id="yjm232-flowchart-V1-1903" class="node default default flowchart-label"><rect height="36" width="45" y="-18" x="-22.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-15, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="30"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">姓名</span></div></foreignObject></g></g><g transform="translate(175.5, 51)" data-id="V2" data-node="true" id="yjm232-flowchart-V2-1904" class="node default default flowchart-label"><rect height="36" width="75" y="-18" x="-37.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-30, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="60"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">偏好語言</span></div></foreignObject></g></g><g transform="translate(300.5, 51)" data-id="V3" data-node="true" id="yjm232-flowchart-V3-1905" class="node default default flowchart-label"><rect height="36" width="75" y="-18" x="-37.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-30, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="60"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">會員等級</span></div></foreignObject></g></g></g></g><g transform="translate(709.5, 53)" data-id="H3" data-node="true" id="yjm232-flowchart-H3-1902" class="node default default flowchart-label"><rect height="36" width="139" y="-18" x="-69.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-62, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="124"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">第 3 輪…越來越長</span></div></foreignObject></g></g><g transform="translate(515, 53)" data-id="H2" data-node="true" id="yjm232-flowchart-H2-1901" class="node default default flowchart-label"><rect height="36" width="64" y="-18" x="-32" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-24.5, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="49"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">第 2 輪</span></div></foreignObject></g></g><g transform="translate(207.5, 53)" data-id="H1" data-node="true" id="yjm232-flowchart-H1-1900" class="node default default flowchart-label"><rect height="36" width="61.015625" y="-18" x="-30.5078125" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-23.0078125, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="46.015625"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">第 1 輪</span></div></foreignObject></g></g><g transform="translate(996.5, 53)" data-id="X" data-node="true" id="yjm232-flowchart-X-1907" class="node default default flowchart-label"><rect height="36" width="75" y="-18" x="-37.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-30, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="60"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">忘了名字</span></div></foreignObject></g></g><g transform="translate(515, 184)" data-id="OK" data-node="true" id="yjm232-flowchart-OK-1909" class="node default default flowchart-label"><rect height="36" width="150" y="-18" x="-75" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-67.5, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="135"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">需要的重點一直都在</span></div></foreignObject></g></g></g></g></g></svg></div>
@@ -3356,6 +3446,7 @@ EC2 上的 Dify
 <li>日誌＝<strong>監視器錄影</strong>：誰、何時、用了什麼、花多久</li>
 <li>防護規則（Guardrails）＝<strong>門口的保全</strong>：直接擋下不該進來或不該說出去的東西</li>
 </ul>
+
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜監視器和保全</strong></p>
 <div class="mbox"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 818.671875 180" style="max-width: 818.672px; min-width: 620px;" xmlns="http://www.w3.org/2000/svg" width="100%" id="yjm233"><style>#yjm233{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;fill:#2b2622;}#yjm233 .error-icon{fill:#dff1ea;}#yjm233 .error-text{fill:#200e15;stroke:#200e15;}#yjm233 .edge-thickness-normal{stroke-width:2px;}#yjm233 .edge-thickness-thick{stroke-width:3.5px;}#yjm233 .edge-pattern-solid{stroke-dasharray:0;}#yjm233 .edge-pattern-dashed{stroke-dasharray:3;}#yjm233 .edge-pattern-dotted{stroke-dasharray:2;}#yjm233 .marker{fill:#8d847b;stroke:#8d847b;}#yjm233 .marker.cross{stroke:#8d847b;}#yjm233 svg{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:15px;}#yjm233 .label{font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;color:#2b2622;}#yjm233 .cluster-label text{fill:#200e15;}#yjm233 .cluster-label span,#yjm233 p{color:#200e15;}#yjm233 .label text,#yjm233 span,#yjm233 p{fill:#2b2622;color:#2b2622;}#yjm233 .node rect,#yjm233 .node circle,#yjm233 .node ellipse,#yjm233 .node polygon,#yjm233 .node path{fill:#dceafa;stroke:#4a8fd6;stroke-width:1px;}#yjm233 .flowchart-label text{text-anchor:middle;}#yjm233 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#yjm233 .node .label{text-align:center;}#yjm233 .node.clickable{cursor:pointer;}#yjm233 .arrowheadPath{fill:#0b0b0b;}#yjm233 .edgePath .path{stroke:#8d847b;stroke-width:2.0px;}#yjm233 .flowchart-link{stroke:#8d847b;fill:none;}#yjm233 .edgeLabel{background-color:#fffdf9;text-align:center;}#yjm233 .edgeLabel rect{opacity:0.5;background-color:#fffdf9;fill:#fffdf9;}#yjm233 .labelBkg{background-color:rgba(255, 253, 249, 0.5);}#yjm233 .cluster rect{fill:#fbf7f1;stroke:#e6ded3;stroke-width:1px;}#yjm233 .cluster text{fill:#200e15;}#yjm233 .cluster span,#yjm233 p{color:#200e15;}#yjm233 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:12px;background:#dff1ea;border:1px solid hsl(156.6666666667, 0%, 80.9803921569%);border-radius:2px;pointer-events:none;z-index:100;}#yjm233 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2b2622;}#yjm233 :root{--mermaid-font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="6" viewBox="0 0 10 10" class="marker flowchart" id="yjm233-yjm233_flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart" id="yjm233-yjm233_flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="yjm233-yjm233_flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="yjm233-yjm233_flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm233-yjm233_flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="yjm233-yjm233_flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#yjm233-yjm233_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-U LE-G1" id="yjm233-L-U-G1-0" d="M75,82L79.167,82C83.333,82,91.667,82,99.117,82C106.567,82,113.133,82,116.417,82L119.7,82"></path><path marker-end="url(#yjm233-yjm233_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-G1 LE-M" id="yjm233-L-G1-M-0" d="M290,82L294.167,82C298.333,82,306.667,82,314.117,82C321.567,82,328.133,82,331.417,82L334.7,82"></path><path marker-end="url(#yjm233-yjm233_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-M LE-G2" id="yjm233-L-M-G2-0" d="M420.36,64L429.079,58.083C437.797,52.167,455.235,40.333,474.737,34.417C494.239,28.5,515.805,28.5,526.589,28.5L537.372,28.5"></path><path marker-end="url(#yjm233-yjm233_flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-G2 LE-R" id="yjm233-L-G2-R-0" d="M662.672,28.5L674.339,28.5C686.005,28.5,709.339,28.5,724.289,28.5C739.239,28.5,745.805,28.5,749.089,28.5L752.372,28.5"></path><path marker-end="url(#yjm233-yjm233_flowchart-pointEnd)" style="fill:none;stroke-width:2px;stroke-dasharray:3;" class="edge-thickness-normal edge-pattern-dotted flowchart-link LS-M LE-L" id="yjm233-L-M-L-0" d="M420.36,100L429.079,105.917C437.797,111.833,455.235,123.667,467.237,129.583C479.239,135.5,485.805,135.5,489.089,135.5L492.372,135.5"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(37.5, 82)" data-id="U" data-node="true" id="yjm233-flowchart-U-1912" class="node default default flowchart-label"><rect height="36" width="75" y="-18" x="-37.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-30, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="60"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">學生輸入</span></div></foreignObject></g></g><g transform="translate(207.5, 82)" data-id="G1" data-node="true" id="yjm233-flowchart-G1-1913" class="node default default flowchart-label"><rect height="57" width="165" y="-28.5" x="-82.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-75, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="150"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">Guardrails<br>門口保全：擋不當輸入</span></div></foreignObject></g></g><g transform="translate(393.8359375, 82)" data-id="M" data-node="true" id="yjm233-flowchart-M-1915" class="node default default flowchart-label"><rect height="36" width="107.671875" y="-18" x="-53.8359375" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-46.3359375, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="92.671875"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">Bedrock 模型</span></div></foreignObject></g></g><g transform="translate(602.671875, 28.5)" data-id="G2" data-node="true" id="yjm233-flowchart-G2-1917" class="node default default flowchart-label"><rect height="57" width="120" y="-28.5" x="-60" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-52.5, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="105"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">Guardrails<br>擋不該說出去的</span></div></foreignObject></g></g><g transform="translate(780.171875, 28.5)" data-id="R" data-node="true" id="yjm233-flowchart-R-1919" class="node default default flowchart-label"><rect height="36" width="45" y="-18" x="-22.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-15, -10.5)" style="" class="label"><rect></rect><foreignObject height="21" width="30"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">回覆</span></div></foreignObject></g></g><g transform="translate(602.671875, 135.5)" data-id="L" data-node="true" id="yjm233-flowchart-L-1921" class="node default default flowchart-label"><rect height="57" width="210" y="-28.5" x="-105" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-97.5, -21)" style="" class="label"><rect></rect><foreignObject height="42" width="195"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">呼叫紀錄寫進 S3<br>監視器錄影（記得遮罩個資）</span></div></foreignObject></g></g></g></g></g></svg></div>
@@ -3385,6 +3476,7 @@ EC2 上的 Dify
 <li>重複送出：不要產生重複的報名紀錄。</li>
 <li>敏感或受限的問題：照防護政策處理，並留下適當的稽核資訊。</li>
 </ul>
+
 <h3 id="ai-07-story">📖 本集故事總結</h3>
 <table>
 <thead>
@@ -3464,6 +3556,7 @@ EC2 上的 Dify
 <li>對話紀錄留語境、變數記憶留確認過的狀態，兩者解決的問題不同。</li>
 <li>日誌管可觀測性、防護規則管安全邊界，兩者都要靠測試案例調整。</li>
 </ul>
+
 <h2 id="ai-07-s10">隨堂測驗</h2>
 <p class="tech"><strong>Q1. 在課程問答的知識庫裡，嵌入模型的主要作用是什麼？</strong></p>
 <ul class="tech">
@@ -3472,6 +3565,7 @@ EC2 上的 Dify
 <li>(C) 永久記住每位使用者的身分</li>
 <li>(D) 判斷這個月的雲端帳單有沒有超支</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 嵌入建立語意座標，系統才找得出跟問題意思相近的文件片段。</p>
@@ -3484,6 +3578,7 @@ EC2 上的 Dify
 <li>(C) 把自然語句換算成目前時間</li>
 <li>(D) 給予主機存取模型服務的權限</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 描述欄位是描述資料的標籤，可以先縮小候選範圍，再做語意檢索。</p>
@@ -3496,6 +3591,7 @@ EC2 上的 Dify
 <li>(C) 時間工具會順便取得使用者的姓名與信箱</li>
 <li>(D) 呼叫時間工具之後就不必再讓使用者確認</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 模型讀得懂語意，但確切日期需要可信的時間來源與明確的時區。</p>
@@ -3508,6 +3604,7 @@ EC2 上的 Dify
 <li>(C) 工作流不需要任何外部工具或權限</li>
 <li>(D) 工作流會消除掉全部的模型費用</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 工作流提高的是可控性與可測試性，消不掉模型、工具或權限本身的風險。</p>
@@ -3520,6 +3617,7 @@ EC2 上的 Dify
 <li>(C) 要模型猜出缺少的信箱</li>
 <li>(D) 把授權憑證顯示給使用者核對</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 欄位驗證加上確認，可以擋掉誤解、猜測與錯誤寫入。</p>
@@ -3532,6 +3630,7 @@ EC2 上的 Dify
 <li>(C) 變數記憶適合無限期保存所有原始對話</li>
 <li>(D) 只要用了變數記憶，就不必處理隱私與過期資料</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 兩者解決的問題不同；結構化的記憶一樣要處理正確性、保存期限與隱私。</p>
@@ -3544,6 +3643,7 @@ EC2 上的 Dify
 <li>(C) 代替知識庫保存所有課程文件</li>
 <li>(D) 直接擋掉所有不當內容</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 日誌提升的是可觀測性；答案品質與安全防護要靠其他機制。</p>
@@ -3556,6 +3656,7 @@ EC2 上的 Dify
 <li>(C) 這樣就能保證任何語言都百分之百安全</li>
 <li>(D) 該放行的案例可以拿來取代存取權限</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 只測該擋的案例，看不出正常內容有沒有被誤傷，兩類都要測。</p>
@@ -3589,6 +3690,7 @@ EC2 上的 Dify
 <li>判斷需求該交給提示、代理人、MCP 還是知識整理</li>
 <li>分清函式呼叫跟 MCP 解決的不同問題</li>
 </ul>
+
 <p class="tech"><em>【模型收到的兩種指示】</em></p>
 <h2 id="ai-08-s1">使用者提示與系統提示</h2>
 <blockquote class="story">
@@ -3598,6 +3700,7 @@ EC2 上的 Dify
 <li>系統提示＝導演事先給的<strong>角色設定</strong>（「你是溫柔的女朋友」）</li>
 <li>使用者提示＝對手演員這一場<strong>說的台詞</strong>（「我肚子痛」）</li>
 </ul>
+
 <p>「設定和台詞分開放，演員才不會把兩者搞混。」</p>
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜角色設定和台詞分開放</strong></p>
@@ -3607,6 +3710,7 @@ EC2 上的 Dify
 <li><strong>使用者提示（User Prompt）</strong>：你這一次真正要問的問題或要交辦的任務。</li>
 <li><strong>系統提示（System Prompt）</strong>：工作守則：角色、個性、背景知識、語氣、行為限制與輸出要求。每次你送出訊息時，它會被一起送給模型。</li>
 </ul>
+
 <pre class="tech"><code>系統提示：你是課程助教，用繁體中文回答，先說結論。
 使用者提示：請比較代理人跟聊天機器人的差別。
 </code></pre>
@@ -3626,6 +3730,7 @@ EC2 上的 Dify
 <li><code>read_file</code>：讀取指定檔案。</li>
 <li><code>web_browse</code>：取得網頁資訊。</li>
 </ul>
+
 <blockquote class="tech">
 <p>工作迴圈：理解任務 → 選工具 → 執行 → 看結果 → 決定下一步</p>
 </blockquote>
@@ -3658,6 +3763,7 @@ EC2 上的 Dify
 <li>函式呼叫＝<strong>顧問和秘書之間</strong>的溝通格式（要用哪個工具）</li>
 <li>MCP＝<strong>秘書和外面廠商之間</strong>的溝通格式（怎麼請廠商執行）</li>
 </ul>
+
 <p>「一個管對內、一個管對外，可以搭配，但不是同一件事。」</p>
 </blockquote>
 <p class="dcap"><strong>🗺️ 圖解｜三個名詞各管哪兩邊</strong></p>
@@ -3864,6 +3970,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>檢索增強生成偏向即時撈片段，先整理成百科偏向預先建結構，兩者可以搭配。</li>
 <li>模型產生的摘要、詞條與連結都要留來源，並定期回頭核對。</li>
 </ul>
+
 <h2 id="ai-08-s9">隨堂測驗</h2>
 <p class="tech"><strong>Q1. 「請把這份會議紀錄整理成三項決議」最適合放在哪裡？</strong></p>
 <ul class="tech">
@@ -3872,6 +3979,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>(C) MCP 的傳輸層</li>
 <li>(D) 向量資料庫的索引設定</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 這是這一次要完成的具體任務，所以屬於使用者提示。</p>
@@ -3884,6 +3992,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>(C) 檢索到的文件片段</li>
 <li>(D) MCP 伺服器的網路位址</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 角色、語氣與長期的行為規範通常寫在系統提示。</p>
@@ -3896,6 +4005,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>(C) 代理人一定比模型有更多訓練參數</li>
 <li>(D) 兩者只是同一個概念的不同叫法</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 代理人是流程與工具執行那一層，模型負責理解與生成。</p>
@@ -3908,6 +4018,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>(C) 文件不能存成 Markdown</li>
 <li>(D) 向量資料庫不能備份</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 它讓工具與參數用結構化方式描述，呼叫結果也比較好驗證。</p>
@@ -3920,6 +4031,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>(C) 函式呼叫只能讀本機檔案</li>
 <li>(D) MCP 伺服器就是系統提示</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> MCP 負責連接服務，函式呼叫負責模型端結構化地挑工具。</p>
@@ -3932,6 +4044,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>(C) 永久修改模型的權重</li>
 <li>(D) 設定模型回答的隨機程度</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 資源側重提供資料；可執行的動作通常屬於工具。</p>
@@ -3944,6 +4057,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>(C) 只用系統提示存放全部文件</li>
 <li>(D) 每次提問都重新訓練模型</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> 它在回答之前先檢索相關資料，讓模型根據撈到的片段生成內容。</p>
@@ -3956,6 +4070,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>(C) MCP 只能搭配特定一家的模型</li>
 <li>(D) MCP 本身就是一種模型</li>
 </ul>
+
 <details class="tech"><summary>看答案</summary>
 
 <p><strong>答案：(A)</strong> MCP 雖然是為模型應用而訂的標準，本身卻跟用哪顆模型無關。</p>
@@ -4029,6 +4144,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>工具跟上下文不是越多越好，相關、清楚、可控才是重點。</li>
 <li>介面跑在本機不代表資料不外傳，動手前先確認可讀範圍、外傳內容與核准方式。</li>
 </ul>
+
 <h2 id="ai-review-s2">第 2 集・Claude Code 的擴充：MCP 與 Hooks</h2>
 <p><a href="#ai-02">→ 回到第 2 集</a></p>
 <h3>📖 本集故事總結</h3>
@@ -4098,6 +4214,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>JSON-RPC 管訊息長什麼樣，傳輸層管訊息怎麼送到，兩件事不要混在一起。</li>
 <li>Hooks 適合把權限檢查、測試與通知變成固定流程，但要控制耗時、副作用與敏感資料。</li>
 </ul>
+
 <h2 id="ai-review-s3">第 3 集・GitHub Copilot 基礎</h2>
 <p><a href="#ai-03">→ 回到第 3 集</a></p>
 <h3>📖 本集故事總結</h3>
@@ -4167,6 +4284,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>斜線命令指定要做什麼，井字號指定看哪些材料，兩者用途不同。</li>
 <li>接受修改前看差異，接受之後跑測試與安全檢查。</li>
 </ul>
+
 <h2 id="ai-review-s4">第 4 集・Copilot 代理人模式</h2>
 <p><a href="#ai-04">→ 回到第 4 集</a></p>
 <h3>📖 本集故事總結</h3>
@@ -4236,6 +4354,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>指示檔放長期規範，單次任務仍要寫清楚目標與驗收條件。</li>
 <li>工具權限照最小權限給，終端機、資料庫與部署格外謹慎。</li>
 </ul>
+
 <h2 id="ai-review-s5">第 5 集・Copilot 的 MCP 與提示檔案</h2>
 <p><a href="#ai-05">→ 回到第 5 集</a></p>
 <h3>📖 本集故事總結</h3>
@@ -4343,6 +4462,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>外部內容可能夾帶提示注入，一律當成資料而不是命令。</li>
 <li>有副作用的工具呼叫都照最小權限給、留紀錄、設人工核准點。</li>
 </ul>
+
 <h2 id="ai-review-s6">第 6 集・AI Agent 實作：AWS 基礎建設</h2>
 <p><a href="#ai-06">→ 回到第 6 集</a></p>
 <h3>📖 本集故事總結</h3>
@@ -4424,6 +4544,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>EC2 跑平台、S3 存文件、Bedrock 出模型算力，三者分工不要混。</li>
 <li>同一條指令在掛角色前後結果不同，就是權限設定有效的證據。</li>
 </ul>
+
 <h2 id="ai-review-s7">第 7 集・AI Agent 實作：Dify 與工作流</h2>
 <p><a href="#ai-07">→ 回到第 7 集</a></p>
 <h3>📖 本集故事總結</h3>
@@ -4505,6 +4626,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>對話紀錄留語境、變數記憶留確認過的狀態，兩者解決的問題不同。</li>
 <li>日誌管可觀測性、防護規則管安全邊界，兩者都要靠測試案例調整。</li>
 </ul>
+
 <h2 id="ai-review-s8">第 8 集・AI 名詞釋疑</h2>
 <p><a href="#ai-08">→ 回到第 8 集</a></p>
 <h3>📖 本集故事總結</h3>
@@ -4580,6 +4702,7 @@ MCP：連接外部的工具、資源或提示範本
 <li>檢索增強生成偏向即時撈片段，先整理成百科偏向預先建結構，兩者可以搭配。</li>
 <li>模型產生的摘要、詞條與連結都要留來源，並定期回頭核對。</li>
 </ul>
+
 </article><nav class="pager"><a href="#ai-08"><small>← 上一集</small>AI 名詞釋疑</a><a class="next" href="#c-ai"><small>全劇終 →</small>回到 AI 開發工具 集數總覽</a></nav></section>
 
 
