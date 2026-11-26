@@ -6549,7 +6549,8 @@ real 3.04
 <p class="tech">示範專案這樣做：沒帶標頭從第 1 筆送，帶了就從下一筆送。用 Node 26.10 內建的 <code>EventSource</code> 實測（伺服器送完三筆就結束回應）。Node 26 的 EventSource 還是實驗功能，不加 <code>--experimental-eventsource</code> 會直接 <code>ReferenceError: EventSource is not defined</code>；加了會先印一行警告。2026-10-03 的輸出：</p>
 <pre class="tech"><code>$ node --experimental-eventsource es.mjs
 (node:44255) [UNDICI-ES] Warning: EventSource is experimental, expect them to change at any time.
-(Use `node --trace-warnings ...` to show where the warning was created)
+(Use 
+ode --trace-warnings ...` to show where the warning was created)
  1.1s open
  1.1s rate id=1 {"pair":"USD/TWD","rate":30.504}
  2.1s rate id=2 {"pair":"USD/TWD","rate":30.508}
